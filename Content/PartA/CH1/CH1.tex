@@ -1,0 +1,538 @@
+%==============================
+%==============================
+\chapter{记号, 约定和物理背景}
+\label{CH1: Notation convention and physical background}
+%==============================
+%==============================
+量子场论, Quantum Field Theory, 的发展可概括为四个关键阶段:在1920--1930年代,克莱因--高登 (Klein--Gordon) 方程与狄拉克 (Dirac) 方程首次将相对论与量子化思想结合,标志着二次量子化的萌芽——场算符、创生与湮灭算符以及反粒子概念由此诞生.
+进入1940--1950年代, 汤川秀树 (Tomonaga) , 施温格 (Schwinger) 和费曼 (Feynman) 各自独立发展出重整化 (renormalization) 方案, 系统地消除量子电动力学 (QED) 微扰展开过程中的紫外发散, 使QED成为精度可达 $10^{-8}$ 的``量子天堂”, 同时费曼图 (Feynman Diagram) 的引入将复杂的多粒子过程可视化, 算法化, 显著简化了高阶微扰计算.
+在1960--1970年代, 杨振宁 (Yang) 与罗德里克.米尔斯 (Mills) 提出非阿贝尔规范场论 (Yang--Mills Theory), 随后谢尔顿.格拉肖 (Glashow), 史蒂文.温伯格 (Weinberg) 与阿卜杜勒.萨拉姆 (Salam) 完成电弱统一 (Electroweak Unification), 并由大卫.阿斯庞德 (Gross), 弗兰克.威尔契克 (Wilczek) 与大卫.波利策 (Politzer) 各自揭示了量子色动力学 (QCD) 的渐近自由 (asymptotic freedom) 特性, 奠定了标准模型 (Standard Model) 的核心框架.
+
+
+从1970年代末至今, 肯.威尔逊 (K.G.Wilson) 系统化了重整化群 (Renormalization Group, RG) 方法, 提出``流线”与``固定点”思想, 并倡导有效场论 (Effective Field Theory, EFT) 理念, 强调在不同能标下仅保留低能自由度构建拉氏量, 而格点量子场论 (Lattice QFT) 配合蒙特卡罗数值模拟则成为研究强耦合态 (如强子谱与相变) 的主要非微扰手段.
+
+
+此外,拓扑量子场论 (Topological QFT) 与Seiberg-Witten对偶、Witten索引等成果拓宽了场论与几何拓扑的交叉研究
+量子场论的核心思想包括: 一是二次量子化, 将场函数升格为算符, 粒子创生与湮灭操作使粒子数不再守恒.
+二是微扰展开与费曼图技术, 以耦合常数为小参量, 借费曼规则系统枚举相互作用贡献.
+三是重整化与重整化群, 通过引入重整化常数消除紫外发散,并用Callan--Symanzik方程描述物理量随重整化标度的演化.
+四是非微扰方法, 如$1/N$ 展开, 复制场论 (Replica Field Theory) 及格点模拟, 专攻强耦合和非平衡问题.
+五是拓扑, 对偶与几何方法, 借助拓扑不变量, 莫德尔对偶和几何Langlands等数学工具, 揭示规范场论的相结构与对偶对称.
+
+
+近期进展方面, 二维共形场论 (CFT) 在统计物理与高能物理的交汇处取得重要突破, 保罗.贝尔切坚 (Belavin), 亚历山大.波利亚科夫 (Polyakov) 构建的严格解析框架促进了临界现象研究.
+1997年,胡安.马尔达西纳 (Maldacena) 提出的AdS/CFT 对偶为非微扰场论与引力提供了全新联系.
+与此同时, 量子信息理论中的纠缠熵度量成为探讨量子场论相变与时空结构的新工具, 量子模拟实验 (冷原子与超导量子比特平台) 也在实时时演化模拟和非平衡动力学研究中取得长足进展.
+
+
+总之, 量子场论从对基本粒子相互作用的首要描述发展为涵盖数学, 信息, 数值与实验多领域交叉的宏大理论体系, 既奠定了现代粒子物理与凝聚态物理的根基, 也持续通过新技术与新观念深化我们对微观规律的认识.
+
+
+%====================
+%====================
+\section{记号和约定}
+\label{CH1 S1 Notation and convention}
+%====================
+%====================
+明确记号和约定可以帮助我们更清晰的交流和理解物理概念.
+除非我们特别提示, 否则以下记号和约定在本书中均适用.
+首先我们约定记号, 对于一个任意标量, 我们使用正常的英文字母:
+\begin{equation}
+  a,\, b,\, c, \ldots
+\end{equation}
+对于一个三维空间的向量, 我们使用粗体字母, 对于三维向量的Catesian分量, 我们使用下标
+\begin{equation}
+  \bm{A} = (A_x, A_y, A_z) \quad \bm{p} = (p_x, p_y, p_z)
+\end{equation}
+\fr{我们不会特意的给向量加一个箭头}.
+如果我们考虑的是四维时空的向量, 我们还是使用一个正常英文字母, 对于协变分量 (co-variant component), 我们使用\fr{下标}, 对于逆变分量 (contra-variant), 我们使用\fr{上标}:
+\begin{equation}
+  A_\mu = (A_0, A_1, A_2, A_3) \quad A^\mu = (A^0, A^1, A^2, A^3)
+\end{equation}
+我们的Minkowski时空的度规张量是:
+\begin{equation}
+  g_{\mu\nu} = \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & -1 & 0 & 0 \\
+    0 & 0 & -1 & 0 \\
+    0 & 0 & 0 & -1
+  \end{pmatrix} \quad
+  g^{\mu\nu} = \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & -1 & 0 & 0 \\
+    0 & 0 & -1 & 0 \\
+    0 & 0 & 0 & -1
+  \end{pmatrix}
+\end{equation}
+从而我们可以立刻对4-向量进行升降:
+\begin{equation}
+  x_\mu = g_{\mu\nu} x^\nu = (x_0, -x_1, -x_2, -x_3) = (t, -x, -y, -z) = (x^0, -\bm{x})
+\end{equation}
+然后我们约定, 逆协变向量可以写为:
+\begin{equation}
+  A^\mu = (A^0, A^1, A^2, A^3) \equiv (A_t, A_x, A_y, A_z) = (A_t, \bm{A}) = (A^0, \bm{A})
+\end{equation}
+根据Einstein求和约定, 上标和下标相同的分量会被求和, 例如:
+\begin{equation}
+  A_\mu B^\mu = A_0 B^0 + A_1 B^1 + A_2 B^2 + A_3 B^3
+\end{equation}
+所以我们可以明确的区分不同形式的张量.
+比如(1,1)-型张量, (0,2)-型张量, (2,0)-型张量分别写为:
+\begin{equation}
+  T^\mu_\nu \quad T_{\mu\nu} \quad T^{\mu\nu}
+\end{equation}
+只要按照正常的Einstein求和约定缩并即可.
+当然了, 一个矩阵作为线性映射一般是(1,1)-型张量, 如果看成是双线性映射, 那么它是(0,2)-型张量. %注解
+对于协变-逆变指标, 我们严格按照如下顺序使用:
+\begin{equation}
+  \mu, \nu, \rho, \sigma, \eta, \lambda, \zeta
+\end{equation}
+如果需要的比这个还多, 我们会格外提示.
+另外, 因为密度这个物理量绝对不会出现在角标上, 所以我们不会对角标和物理量作为区分, 一般常用的物理量不会改变意义, 比如$\rho$表示密度, $\sigma_{0,1,2,3}$是Pauli矩阵, $\epsilon_{ijk}$是Levi-Civita符号, $\mu_B$ 是Bohr磁子, $\hbar$ 是约化Planck常数, $c$ 是光速, $k_B$ 是Boltzmann常数, $e$ 是电子电荷, $m_e$ 是电子质量, $m_p$ 是质子质量, $m_n$ 是中子质量, $M_W$ 是W玻色子质量, $M_Z$ 是Z玻色子质量, $M_H$ 是希格斯玻色子质量, $\alpha$ 是精细结构常数, $\Lambda_{\text{QCD}}$ 是量子色动力学的标度参数.
+
+
+对于一个波函数, 我们使用$\psi$来表示:
+\begin{equation}
+  \psi(\bm{x}; t) = \braket{\bm{x}}{\psi; t}
+\end{equation}
+是态$\ket{\psi; t}$在位置基上的投影, 而时间在量子力学中是一个参数, 所以我们单独使用分号区别开来.
+对于一个场, 我们使用$\phi$来表示, 因为场是是时间-空间的函数, 所以我们使用括号来表示:
+\begin{equation}
+  \phi(t, x, y, z) = \phi(x^\mu) = \phi(x^0, x^1, x^2, x^3) = \phi(x^0, \bm{x}) = \phi(t, \bm{x})
+\end{equation}
+除了有时空分量以外, 我们还要处理旋量, spinor, 用$\chi$来表示, 另外, 我们明确区分列向量与行向量, 所以我们有:
+\begin{equation}
+  \chi = [1 ,0 ,0 ,0]^T \quad \chi^\dagger = [1 ,0 ,0 ,0]
+\end{equation}
+来标记.
+对于有极化方向的物理量, 比如光, 比如声子, 我们要考虑极化向量, 我们使用如下的记号, 他仍然有四个分量:
+\begin{equation}
+  \varepsilon^\mu(k^\mu, \lambda)
+\end{equation}
+其中$k^\mu$是4-波向量, $\lambda$是极化方向的标号, 具体的意义会在量子电动力学中给明.
+
+对于量子场论中的算符, 我们同意使用$\hat{}$来标记, 比如湮灭-创生算子分别是:
+\begin{equation}
+  \hat{a} \quad \hat{a}^\dagger
+\end{equation}
+他们作用在Fock态上, 记作:
+\begin{equation}
+  \ket{1, 1, 0, 0, 0, ,1, \cdots}
+\end{equation}
+我们不解释他们的来源和物理意义, 留待各个章节讨论, 这里只是规定记号.
+其余一切和量子力学有关的, 都是正常的Dirac记号.
+
+对于Fourier变换, 我们使用如下的记号, 从时间变量开始:
+\begin{equation}
+  \tilde{f}(\omega) = \int_{-\infty}^{+\infty} f(t) e^{\fr{+}\mathrm{i}\, \omega t} \dd{t} \Leftrightarrow
+  f(t) = \int_{-\infty}^{+\infty} \tilde{f}(\omega) e^{-\mathrm{i}\, \omega t} \dd{\omega}
+\end{equation}
+另外我们强调一下, $\mathrm{i}\,$是虚数, $i$可能是一个角标的索引, 我们作出严格区分避免混淆.
+然后是空间上的Fourier变换:
+\begin{equation}
+  \tilde{f}(\bm{k}) = \int_{\mathbb{R}^3} f(\bm{x}) e^{-\mathrm{i}\, \bm{k} \cdot \bm{x}} \dd[3]{x} \Leftrightarrow
+  f(\bm{x}) = \int_{\mathbb{R}^3} \tilde{f}(\bm{k}) e^{+\mathrm{i}\, \bm{k} \cdot \bm{x}} \dd[3]{k}
+\end{equation}
+从而我们有4维时空的整体Fourier变换:
+\begin{equation}
+  \tilde{f}(k) = \int_{\mathbb{R}^4} f(x) e^{-\mathrm{i}\, k \cdot x} \dd[4]{x} \Leftrightarrow
+  f(x) = \int_{\mathbb{R}^4} \tilde{f}(k) e^{+\mathrm{i}\, k \cdot x} \dd[4]{k}
+\end{equation}
+注意, 这里的$k$是4-波向量, $x$是4-位置向量, 我们遇到他们两个缩并的时候, 我们省略指标, 但是明确的写出那个``$\cdot$", 实际上, 上面的式子意思是:
+\begin{equation}
+ k\cdot x \equiv k^\mu x_\mu = k^0 x^0 - \bm{k} \cdot \bm{x} = \omega t - \bm{k} \cdot \bm{x} = \omega t - k_x x - k_y y - k_z z
+\end{equation}
+
+接下来我们规定导数的几号, 我们的协变导数为:
+\begin{equation}
+  \partial_\mu = \frac{\partial}{\partial x^\mu} = \left( \frac{\partial}{\partial x^0}, \frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3} \right) = \left( \frac{\partial}{\partial t}, \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) = \left(\pdv{}{x^0}, \nabla\right)
+\end{equation}
+其中$\nabla$是空间的梯度算符, 也就是:
+\begin{equation}
+  \nabla = \left( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) = \left( \pdv{}{x^1}, \pdv{}{x^2}, \pdv{}{x^3} \right)
+\end{equation}
+从而我们获得逆变导数:
+\begin{equation}
+  \partial^\mu = g^{\mu\nu} \partial_\nu = \left( \frac{\partial}{\partial x^0}, -\frac{\partial}{\partial x^1}, -\frac{\partial}{\partial x^2}, -\frac{\partial}{\partial x^3} \right)= \left( \pdv{}{x^0}, \pdv{}{x_1}, \pdv{}{x_2}, \pdv{}{x_3} \right) = \left( \pdv{}{x^0}, -\nabla \right) 
+\end{equation}
+
+
+现在我们讨论一下单位制的问题, 在国际单位制中, 我们有:
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|}
+  \hline
+  符号 & 意义 & 数值 \\
+  \hline
+  $\hbar$ & 约化Planck常数 & $1.055 \times 10^{-34}~\mathrm{J\,s}$ \\
+  $c$ & 光速 & $3\times10^8~\mathrm{m/s}$ \\
+  $k_B$ & Boltzmann常数 & $1.381 \times 10^{-23}~\mathrm{J/K}$ \\
+  $e$ & 元电荷 & $1.602 \times 10^{-19}~\mathrm{C}$ \\
+  $\epsilon_0$ & 真空介电常数 & $8.854 \times 10^{-12}~\mathrm{F/m}$ \\
+  $\mu_0$ & 真空磁导率 & $4\pi \times 10^{-7}~\mathrm{N/A^2}$\\
+  $\alpha$ & 精细结构常数 & $\approx 1/137$\\
+  $\Lambda_{\text{QCD}}$ & QCD标度参数 & $\approx 200~\mathrm{MeV}$\\
+  $G_F$ & Fermi耦合常数 & $1.166 \times 10^{-5}~\mathrm{GeV}^{-2}$\\
+  $M_W$ & W玻色子质量 & $80.379~\mathrm{GeV/c^2}$\\
+  $M_Z$ & Z玻色子质量 & $91.1876~\mathrm{GeV/c^2}$\\
+  $M_H$ & Higgs玻色子质量 & $125.1~\mathrm{GeV/c^2}$\\
+  \hline
+\end{tabular}
+\caption{国际单位制中的一些重要物理常数}
+\label{tab:physical_constants}
+\end{table}
+这些单位自然是正确的, 但是对于基本的单位检查, 我们考虑如下基本单位, 米, 秒, 千克, 库仑, 焦耳, 开尔文:
+\begin{equation}
+  \mathrm{m} \quad \mathrm{s} \quad \mathrm{Kg} \quad \mathrm{C} \quad \mathrm{J}  \quad \mathrm{K}
+\end{equation}
+其中焦耳是导出单位, 安培也是导出单位, 法拉第Farad(电容的单位), 牛, 也是导出单位:
+\begin{equation}
+  \mathrm{J} = \frac{\mathrm{Kg} \cdot \mathrm{m^2}}{\mathrm{s^{-2}}} \quad \mathrm{A} = \frac{\mathrm{C}}{\mathrm{s}} \quad \mathrm{F} = \frac{\mathrm{C}}{\mathrm{V}} = \frac{\mathrm{C}^2}{\mathrm{J}} \quad \mathrm{N} = \frac{\mathrm{J}}{\mathrm{m}}
+\end{equation}
+从而我们立刻可以写出一些其他的导出单位, 比如伏特Volt, 电场强度, 磁场强度等:
+\begin{equation}
+  \mathrm{V} = \frac{\mathrm{J}}{\mathrm{C}} \quad \mathrm{V/m} = \frac{\mathrm{J}}{\mathrm{C} \cdot \mathrm{m^{-1}}} \quad \mathrm{T} = \frac{\mathrm{J} \cdot \mathrm{s}}{\mathrm{C} \cdot \mathrm{m^2}}
+\end{equation}
+对于数值上的选择, 焦耳对于微观系统太大了, 所以我们主要使用电子伏特eV作为基本单位, 就是一个电子在1伏特的电压下获得的能量:
+\begin{equation}
+  1~\mathrm{eV} = 1.602 \times 10^{-19}~\mathrm{J}
+\end{equation}
+然后我们有不同标度上的单位, 比如MeV, GeV, TeV, PeV, EeV, ZeV, HeV等:
+\begin{equation}
+  1~\mathrm{MeV} = 10^6~\mathrm{eV} \quad 1~\mathrm{GeV} = 10^9~\mathrm{eV} \quad 1~\mathrm{TeV} = 10^{12}~\mathrm{eV}
+\end{equation}
+如果是凝聚态系统, 我们可能更多考虑的是meV, $\mu$eV, neV等:
+\begin{equation}
+  1~\mathrm{meV} = 10^{-3}~\mathrm{eV} \quad 1~\mu\mathrm{eV} = 10^{-6}~\mathrm{eV} \quad 1~\mathrm{neV} = 10^{-9}~\mathrm{eV}
+\end{equation}
+同理, 对于时间, 我们使用秒作为基本单位, 但是对于微观系统, 我们使用皮秒ps, 飞秒fs, 阿秒as, 纳秒ns等:
+\begin{equation}
+  1~\mathrm{ps} = 10^{-12}~\mathrm{s} \quad 1~\mathrm{fs} = 10^{-15}~\mathrm{s} \quad 1~\mathrm{as} = 10^{-18}~\mathrm{s}
+\end{equation}
+对于长度, 我们使用米作为基本单位, 但是对于微观系统, 我们使用纳米nm, 微米$\mu$m, 皮米pm等:
+\begin{equation}
+  1~\mathrm{nm} = 10^{-9}~\mathrm{m} \quad 1~\mu\mathrm{m} = 10^{-6}~\mathrm{m} \quad 1~\mathrm{pm} = 10^{-12}~\mathrm{m}
+\end{equation}
+
+
+现在我们引入自然单位制, 优点有两个, 第一个我们不用再写$\hbar$, $c$这些常数了, 第二个就是我们在进行量纲分析的时候, 只需要考虑能量的单位或者质量的单位, 其他的单位都可以通过能量或者质量来转换.
+在自然单位制下, 我们有:
+\begin{equation}
+  \hbar = c = 1
+\end{equation}
+为了处理电磁学问题, 我们还要考虑Heaviside-Lorentz单位制, 也就是 (根据电磁学, $c^2 \epsilon_0 \mu_0 = 1$):
+\begin{equation}
+  \epsilon_0 = \mu_0 = 1
+\end{equation}
+为了处理热力学问题, 我们还引入:
+\begin{equation}
+  k_B = 1
+\end{equation}
+根据国际单位制中最基本的关系, 我们可考虑能量-时间, 能量-长度, 质量-长度等关系:
+\begin{equation}
+  E = \hbar \omega  \quad E = m c^2 = m \quad L=c t
+\end{equation}
+转化到自然单位制下, 我们立刻发现:
+\begin{enumerate}
+\item 质量的单位和能量的单位是相同的, 都是$\mathrm{eV}$.
+\item 时间的单位是能量的倒数, 也就是$\mathrm{eV}^{-1}$.
+\item 长度的单位是能量的倒数, 也就是$\mathrm{eV}^{-1}$.
+\end{enumerate}
+一个基本原理不能被混淆: \fr{无量纲的数在任何单位制下都是无量纲的, 选择单位制只是为了方便计算和表达, 物理量的本质不变}.
+当然我们国际单位制下的量和在自然单位制下的量数值是不相同的.
+我们再表格Table.~\ref{tab:natural_units_physical_constants}中列出一些重要的物理常数在自然单位制下的数值.
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+  \hline
+  SI数值 & 自然单位制数值 \\
+  \hline
+  1~$\mathrm{J}$ & $6.242 \times 10^{18}~\mathrm{eV}$ \\
+  1~$\mathrm{s}$ & $1.52 \times 10^{15}~\mathrm{eV}^{-1}$ \\
+  1~$\mathrm{m}$ & $5.07 \times 10^{6}~\mathrm{eV}^{-1}$ \\
+  1~$\mathrm{kg}$ & $5.61 \times 10^{35}~\mathrm{eV}$ \\
+  $e$ & $0.303$ \\
+  1~$\mathrm{K}$ & $8.617 \times 10^{-5}~\mathrm{eV}$ \\
+  \hline
+\end{tabular}
+\caption{自然单位制中的一些重要物理常数}
+\label{tab:natural_units_physical_constants}
+\end{table}
+其中, $e$ 是元电荷的无量纲化数值, 是根据精细结构常数$\alpha$:
+\begin{equation}
+  \alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \approx \frac{1}{137}
+\end{equation}
+换算出来的:
+\begin{equation}
+  e = \sqrt{4\pi\alpha} \approx 0.303
+\end{equation}
+
+%====================
+%====================
+\newpage
+\section{电动力学}
+\label{CH1 S4 Electrodynamics}
+%====================
+%====================
+
+%====================
+%====================
+\section{狭义相对论}
+\label{CH1 S2 Special relativity}
+%====================
+%====================
+
+%====================
+%====================
+\section{量子力学}
+\label{CH1 S3 Quantum mechanics}
+%====================
+%====================
+% 概率密度, 概率流
+% Heisenberg方法
+% 薛定谔方程, 时间演化算符
+% 全同粒子假设
+% Fock空间
+% 相对论量子力学
+初期对于量子力学的讨论, 主要是对于经典力学理论的量子化, 也就是将经典力学的物理量变成动力学量, observables, 然后我们可以通过测量来获得物理量的数值:
+\begin{equation}
+  \expval{\mathcal{O}} = \mel**{\psi}{\mathcal{O}}{\psi}
+\end{equation}
+当然你可以选择把上面的式子投影到位置空间计算:
+\begin{equation}
+  \expval{\mathcal{O}} = \int_{\mathbb{R}^3} \psi^*(\bm{x}') \mel**{\bm{x}'}{\mathcal{O}}{\bm{x}} \psi(\bm{x}) \dd[3]{x} 
+\end{equation}
+这样就变成了求力学量的矩阵元问题.
+在这个问题中, 我们没有考虑任何时间的问题.
+我们在量子力学中接触的最多的就是Schrödinger方程, 他的核心在于, 算符不随时间演化, 但是态是随时间演化的.
+态的演化由如下Schrödinger方程解出:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\ket{\psi;t}}{t} = \hat{H} \ket{\psi;t}
+\end{equation}
+其中$\hat{H}$是Hamilton算符, $\ket{\psi;t}$是态的时间演化.
+这牵扯出来了第一个问题, 我们怎么写出来Hamiltonian算符呢?
+Hamiltonian算符的写法是基于经典力学的, 我们先不说算符层面的, 我们先说经典力学的Hamiltonian, 他由Legendre方程导出, 也就是:
+\begin{equation}
+  H(q, p) = \sum_i p_i \dot{q}_i - L(q, \dot{q})
+\end{equation}
+其中$q_i$是广义坐标, $\dot{q}_i$是广义速度, $p_i$是广义动量, $L(q, \dot{q})$是Lagrangian.
+广义动量是由Lagrangian导出的:
+\begin{equation}
+  p_i = \pdv{L}{\dot{q}_i}
+\end{equation}
+实际上他的正确名字是正则共轭动量, canonical conjugate momentum.
+我们要注意, 正则动量和机械动量是不同的, 机械动量是一个例子的真正运动速度给出的:
+\begin{equation}
+  \bm{p} = m \bm{v}
+\end{equation}
+很多时候他们是重合的, 但是在有外场作用的情况下, 他们是不同的.
+现在我们有了经典力学的Hamiltonian, 我们可以将他量子化, 也就是将广义坐标和广义动量变成算符:
+\begin{equation}
+  \hat{H} = \sum_i \hat{p}_i \hat{\dot{q}}_i - \hat{L}(\hat{q}, \hat{\dot{q}})
+\end{equation}
+也就是说, 我们规则化的把位置提升到位置算符, 动量提升到动量算符.
+算符就是一个线性映射, 他将态空间中的态映射到另一个态空间中.
+而算符一般又不是阿贝尔 (abelian) 的, 也就是算符之间不满足交换律:
+\begin{equation}
+  \hat{A} \hat{B} \neq \hat{B} \hat{A}
+\end{equation}
+这就导致了一个问题, 我们怎么定义算符的乘积呢?
+这是一个规则问题, 我们考虑Weyl序方法:
+\begin{definition}[][Weyl序]
+  Weyl序是将两个算符的乘积写成算符的平均值, 也就是:
+  \begin{equation}
+    \hat{A} \hat{B} = \frac{1}{2} (\hat{A} \hat{B} + \hat{B} \hat{A})
+  \end{equation}
+  这个方法可以推广到对于多次单项式算符的乘积, 也就是:
+  \begin{equation}
+    \hat{A}^m \hat{A}^n \to \sum_{\sigma \in S_{n+m}} \frac{m! n!}{(m+n)!} \hat{\mathcal{O}}_1 \hat{\mathcal{O}}_2 \cdots \hat{\mathcal{O}}_{m+n}
+  \end{equation}
+  其中$S_{n+m}$是$n+m$个算符的所有排列, $\sigma$是其中的一种排列, 所以就是对所有排列求和.
+  $\hat{\mathcal{O}}_1$是在排列$\sigma$下的第一个算符, $\hat{\mathcal{O}}_2$是第二个算符, 以此类推.
+\end{definition}
+我们举几个例子, 考虑经典的力学量是$xp$, 那么在Weyl序下, 我们有量子化的结果:
+\begin{equation}
+  xp \to \frac{1}{2} (\hat{x} \hat{p} + \hat{p} \hat{x})
+\end{equation}
+对于二次的力学量, 比如$xp^2$, 我们有:
+\begin{equation}
+  xp^2 \to \frac{1}{3} (\hat{x} \hat{p}^2 + \hat{p}^2 \hat{x} + 2 \hat{p} \hat{x} \hat{p})
+\end{equation}
+对于三次的力学量, 比如$x^2 p^3$, 我们有:
+\begin{equation}
+  x^2 p^3 \to \frac{1}{4} (\hat{x}^2 \hat{p}^3 + \hat{p}^3 \hat{x}^2 + 3 \hat{x} \hat{p}^2 \hat{x} + 3 \hat{p} \hat{x}^2 \hat{p})
+\end{equation}
+我们一般也不会遇到太多次数的力学量, 所以不做过多示范了.
+Weyl序有一个特别优势:
+\begin{theorem}[][Weyl序的优势]
+  Weyl序的量子化方法是经典到量子对应中, 唯一能把实值符号映射为自伴算符的对称规则.
+\end{theorem}
+所以只要我们的经典力学量是实值的, 那么Weyl序就能给出一个自伴算符, 也就是Hermitian算符.
+一个很实用的例子就是考虑角动量算符, 在经典力学中
+\begin{equation}
+  L_z = (\bm{x} \times \bm{p} )_z = x p_y - y p_x
+\end{equation}
+考虑Weyl序:
+\begin{equation}
+  x p_y \to \frac{1}{2} (\hat{x} \hat{p}_y + \hat{p}_y \hat{x}) \quad y p_x \to \frac{1}{2} (\hat{y} \hat{p}_x + \hat{p}_x \hat{y})
+\end{equation}
+所以我们有:
+\begin{equation}
+  \hat{L}_z = \frac{1}{2} (\hat{x} \hat{p}_y + \hat{p}_y \hat{x}) - \frac{1}{2} (\hat{y} \hat{p}_x + \hat{p}_x \hat{y})
+\end{equation}
+如果不考虑外场, 我们有$[\hat{x}, \hat{p}_y] = 0$,  $[\hat{y}, \hat{p}_x] = 0$, 我们当然就获得了教科书里的标准形式:
+\begin{equation}
+  \hat{L}_z = \hat{x} \hat{p}_y - \hat{y} \hat{p}_x
+\end{equation}
+
+
+现在我们回到Schrödinger方程的讨论, 我们现在就能系统的写出来Hamiltonian算符了, 也就是:
+\begin{equation}
+  \hat{H} = \frac{\hat{\bm{p}}^2}{2m} + V(\hat{\bm{x}})
+\end{equation}
+其中$\hat{\bm{p}}$是动量算符, $\hat{\bm{x}}$是位置算符, $V(\hat{\bm{x}})$是势能算符.
+对于Schrödinger方程, 我们有:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\ket{\psi;t}}{t} = \frac{\hat{\bm{p}}^2}{2m} \ket{\psi;t} + V(\hat{\bm{x}}) \ket{\psi;t}
+\end{equation}
+我们可以将态写成位置空间的波函数:
+\begin{equation}
+  \psi(\bm{x}; t) = \braket{\bm{x}}{\psi;t}
+\end{equation}
+然后我们可以将Schrödinger方程写成波函数的形式:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\psi(\bm{x}; t)}{t} = \left(\frac{\hat{p}^2}{2m} + V(\hat{\bm{x}}) \right) \psi(\bm{x}; t)
+\end{equation}
+这就是我们在量子力学课程中解决的东西.
+虽然他是一个线性方程, 就是两个解的线性组合$\psi_1 + \psi_2$仍然是解.
+但是求解这个方程可不简单, 尤其是势能$V(\hat{\bm{x}})$很复杂的时候, 这个在量子力学课程中已经有所涉及.
+所以我们一般考虑扰动方法求解, 不管是含时的还是不含时的.
+
+我们这里为了理论的完整性, 只是形式上的给出级数解, 方法是考虑时间演化算符:
+\begin{equation}
+  \ket{\psi;t} = \hat{U}(t,t_0) \ket{\psi;t_0}
+\end{equation}
+从而我们的Schrödinger方程变成了:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{}{t}\hat{U}(t,t_0)\ket{\psi;t_0} = \hat{H} \hat{U}(t,t_0) \ket{\psi;t_0}
+\end{equation}
+这个方程自然是不依赖于$t_0$的, 所以我们得到了时间演化算符的方程:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\hat{U}(t,t_0)}{t} = \hat{H} \hat{U}(t,t_0)
+\end{equation}
+我们考虑一般的情况, 就是$\hat{H}$是时间相关的, 也就是$\hat{H} = \hat{H}(t)$, 那么我们可以将时间演化算符写成如下的形式:
+\begin{equation}
+  \hat{U}(t,t_0) = \mathbb{1} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \hat{U}(t_1,t_0) \dd{t_1}
+\end{equation}
+我们考虑使用Picard迭代方法, 我们先不考虑积分右侧, 那自然就是迭代的第0阶:
+\begin{equation}
+  \hat{U}^{(0)}(t,t_0) = \mathbb{I}
+\end{equation}
+然后迭代第1阶, 我们有:
+\begin{equation}
+  \hat{U}^{(1)}(t,t_0) = \mathbb{I} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \dd{t_1}
+\end{equation}
+然后迭代第2阶, 我们有:
+\begin{align}
+  \hat{U}^{(2)}(t,t_0) =& \mathbb{I} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \hat{U}^{(1)}(t_1,t_0) \dd{t_1} \\
+  =& \mathbb{I} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \left( \mathbb{I} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t_1} \hat{H}(t_2) \dd{t_2} \right) \dd{t_1} \\
+  =& \mathbb{I} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \dd{t_1} + \frac{1}{(\mathrm{i}\, \hbar)^2} \int_{t_0}^{t} \int_{t_0}^{t_1} \hat{H}(t_1) \hat{H}(t_2) \dd{t_2} \dd{t_1}
+\end{align}
+然后我们形式上可以写出无限迭代后的解:
+\begin{equation}
+  \hat{U}^{(n)}(t,t_0) = \mathbb{I} + \sum_{k=1}^{n} \frac{1}{(\mathrm{i}\, \hbar)^k} \int_{t_0}^{t} \int_{t_0}^{t_1} \cdots \int_{t_0}^{t_{k-1}} \hat{H}(t_1) \hat{H}(t_2) \cdots \hat{H}(t_k) \dd{t_k} \dd{t_{k-1}} \cdots \dd{t_1}
+\end{equation}
+这个就是Dyson级数, 我们可以借用时间排序算符, 把他写成更紧凑的形式.
+时间排序算符定义如下:
+\begin{definition}[][时间排序算符]
+  时间排序算符是一个算符, 他将一系列算符按照时间从大到小的顺序排列, 也就是:
+  \begin{equation}
+    \mathcal{T} \left( \hat{A}(t_1) \hat{A}(t_2) \cdots \hat{A}(t_n) \right) = \hat{A}(t_{\sigma(1)}) \hat{A}(t_{\sigma(2)}) \cdots \hat{A}(t_{\sigma(n)})
+  \end{equation}
+  其中$\sigma$是一个排列, 满足$t_{\sigma(1)} > t_{\sigma(2)} > \cdots > t_{\sigma(n)}$.
+\end{definition}
+如果我们考虑指数函数的展开:
+\begin{equation}
+  e^{\hat{A}} = \mathbb{I} + \hat{A} + \frac{1}{2!} \hat{A}^2 + \frac{1}{3!} \hat{A}^3 + \cdots
+\end{equation}
+然后我们考虑:
+\begin{equation}
+  \exp(\frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'}) = \mathbb{I} + \frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} + \frac{1}{2! (\mathrm{i}\,\hbar)^2} \int_{t_0}^{t} \int_{t_0}^{t'} \hat{H}(t') \hat{H}(t'') \dd{t''} \dd{t'} + \cdots
+\end{equation}
+我们把时间轴从过去到未来排列好, 自然就是:
+\begin{equation}
+  \mathcal{T} \exp(\frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'}) = \mathbb{I} + \frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{H}(t_1) \dd{t_1} + \frac{1}{2! (\mathrm{i}\,\hbar)^2} \int_{t_0}^{t} \int_{t_0}^{t_1} \hat{H}(t_1) \hat{H}(t_2) \dd{t_2} \dd{t_1} + \cdots
+\end{equation}
+从而我们可以将Dyson级数写成如下的形式:
+\begin{equation}
+  \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} \right)
+\end{equation}
+当然只有这个式子是没有什么实际计算意义上的, 因为Dyson级数的的计算是很复杂的, 但至少有了形式上的迭代解.
+
+
+当然, 我们也可以不使用态的演化来描述量子力学, 我们可以使用算符的演化来描述量子力学, 从而确保态是不变的.
+我们从Schrödinger绘景出发, 我们考虑一个和时间无关的算符$\hat{A}$.
+再$t$时刻, 我们求这个算符的在态$\ket{\Psi;t}$的期望值, 也就是:
+\begin{equation}
+  \expval{\hat{A}} = \mel**{\Psi;t}{\hat{A}}{\Psi;t}
+\end{equation}
+其中态的演化由时间演化算符给出, 是Hamiltonian算符决定的:
+\begin{equation}
+  \ket{\Psi;t} = \hat{U}(t,t_0) \ket{\Psi;t_0} \quad \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} \right)
+\end{equation}
+我们对$\expval{\hat{A}} = \mel**{\Psi;t}{\hat{A}}{\Psi;t}$这个式子进行一下变形:
+\begin{equation}
+  \expval{\hat{A}} = \mel**{\Psi;t_0}{\hat{U}^\dagger(t,t_0) \hat{A} \hat{U}(t,t_0)}{\Psi;t_0}
+\end{equation}
+其中$\hat{U}(t,t_0)$是时间演化算符, $\hat{U}^\dagger(t,t_0)$是他的厄米共轭, $t_0$是$t$之前的一个时刻.
+也就是说, 我们在$t$时刻的期望值, 不仅可以考虑一个不随时间移动的算符, 在$t$时刻的态来计算, 还可以\fr{考虑一个固定时刻的态, 然后把算符演化到$t$时刻来计算}.
+
+
+这就是Heisenberg方法, 他是将态空间的态固定, 而算符随着时间演化.
+\begin{definition}[][Heisenberg方法]
+  Heisenberg绘景中的算符是随着时间演化的, 也就是:
+  \begin{equation}
+    \hat{A}_{\text{H}}(t) = \hat{U}(t,t_0) \hat{A}_{\text{S}}(t_0) \hat{U}^\dagger(t,t_0)
+  \end{equation}
+  其中$\hat{U}(t,t_0)$是时间演化算符, $\hat{A}_{\text{S}}(t_0)$是初始时刻的算符.
+  态是不随时间演化的, 就一直是$\ket{\psi;t_0}$.
+\end{definition}
+\fr{这并不是否定Schorödinger绘景下的算符可以带时间}, 因为有的算符就是随时间变化的.
+
+
+
+
+
+当然了, 这个还是形式意义大于实际意义, 因为时间演化算符具体展开出来是非常困难的.
+
+
+
+
+
+
+
+
+
+%====================
+%====================
+\section{流体力学}
+\label{CH1 S5 Fluid mechanics}
+%====================
+%====================
+
+
+
+%====================
+%====================
+\section{经典场论}
+\label{CH1 S6 Classical field theory}
+%====================
+%====================
+
+
+
+
+
+
+
+

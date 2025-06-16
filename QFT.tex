@@ -1,0 +1,145 @@
+\documentclass[lang=cn,12pt,a4paper,fontset=none]{beautybook}
+\definecolor{coverbgcolor}{HTML}{77969a}
+\definecolor{coverfgcolor}{HTML}{2e5c6e}
+\definecolor{coverbar}{HTML}{517794}
+\definecolor{bottomcolor}{HTML}{2c4f54}
+\definecolor{nuanbai}{HTML}{f5f5f5}
+\pagecolor{nuanbai}
+\beautybookstyle={cover-choose=enfig,math-font=plain,sidebar=off,}
+\usepackage{stys/beautybook-cnsettings} % 中文配置文件
+\usepackage{newtxmath}
+\usepackage{silence}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font shapes}
+\begin{document}
+%==========
+%==========
+\thispagestyle{empty}
+\title{量子场论笔记}
+\subtitle{概念, 证明, 习题与解答}
+\edition{第一版}
+\bookseries{基础物理学讲义系列}
+\author{赵红鹰, 刘建龙}
+\pressname{抽象物理研究所}
+\presslogo{beautybook-logo}
+\coverimage{hummingbird-8013214}
+\makecover
+\makeatletter
+%==========
+%==========
+\definecolor{bg}{HTML}{e0e0e0}
+\definecolor{fg}{HTML}{2c4f54}
+\colorlet{outermarginbgcolor}{bg}
+\colorlet{outermarginfgcolor}{fg}
+\titleimage{chapteroddimage={c9,c10},
+partoddimage={c9,c10},
+chapterevenimage={c9,c10},
+partevenimage={c9,c10}
+}
+\chapimage{\beautybook@chapterimagename} % 会自动改变
+\partimage{\beautybook@partimagename}    % 会自动改变
+\makeatother
+\colorlet{framegolden}{fg}
+\colorlet{framegray}{bg!50}
+\frontmatter
+\pagenumbering{Roman}
+%==================================================
+%==================================================
+{% Preface
+\thispagestyle{empty}
+% \addcontentsline{toc}{chapter}{Preface}
+\chapter*{前言}
+装逼我让你飞起来!
+\hfill
+\begin{tabular}{lr}
+    &-- 赵红鹰\\ 
+    &2024-07-12
+\end{tabular}
+\clearpage}
+%==================================================
+%==================================================
+\thispagestyle{empty}
+\tableofcontents\let\cleardoublepage\clearpage
+\mainmatter
+\pagenumbering{arabic}
+%==================================================
+%==================================================
+
+
+%==============================
+%==============================
+\partabstract{你觉得很难, 大家也觉得很难.}
+\part{自旋为0, 1/2, 1的场论}
+\input{Content/PartA/CH1/CH1.tex}
+
+
+%==============================
+%==============================
+
+
+%==================================================
+%==================================================
+
+
+
+%==================================================
+%==================================================
+\clearpage
+\bottomimage{hummingbird-8013214}
+\ISBNcode{\EANisbn[ISBN=978-80-7340-097-2]} %
+\summary{基础物理学讲义系列}
+\makebottomcover
+\end{document}
+%============================================================
+%============================================================
+
+
+%============================================================
+%============================================================
+%==========
+\begin{proof}
+  6666
+\end{proof}
+%==========
+
+%==========
+\begin{theorem}[][名称][thm:名称]
+   6666
+\end{theorem}
+%==========
+
+%==========
+\begin{corollary}
+   6666
+\end{corollary}
+%==========
+
+%==========
+\begin{remark}
+   6666
+\end{remark}
+%==========
+
+%==========
+\begin{lemma}[][][lem:important1]
+   6666
+\end{lemma}
+%==========
+
+%==========
+\begin{fancybox}
+\begin{enumerate}
+   \item 
+   \item 
+\end{enumerate}
+\end{fancybox}
+%==========
+
+%==========
+\begin{problem}[][]
+   6666
+\end{problem}
+\begin{solution}
+   6666
+\end{solution}
+%==========
