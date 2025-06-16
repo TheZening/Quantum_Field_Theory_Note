@@ -560,11 +560,11 @@ Heisenbg绘景的变化方法还是适用的:
 \end{equation}
 我们获得:
 \begin{equation}
-  \mathrm{i}\, \hbar \pdv{\hat{x}_{\text{H}}(t)}{t} = \frac{2 \mathrm{i}\, \hbar}{m} \hat{p}_{\text{H}}(t)
+  \mathrm{i}\, \hbar \pdv{\hat{x}_{\text{H}}(t)}{t} = \frac{2 \mathrm{i}\, \hbar}{2m} \hat{p}_{\text{H}}(t)
 \end{equation}
 这还是一个微分方程, 我们如果考虑从$t_0$到$t$的演化, 那么我们可以将他积分:
 \begin{equation}
-  \hat{x}_{\text{H}}(t) - \hat{x}_{\text{H}}(t_0) = \frac{2}{m} \int_{t_0}^{t} \hat{p}_{\text{H}}(t') \dd{t'}
+  \hat{x}_{\text{H}}(t) - \hat{x}_{\text{H}}(t_0) = \frac{1}{m} \int_{t_0}^{t} \hat{p}_{\text{H}}(t') \dd{t'}
 \end{equation}
 这里有出现一个问题, 我们还没说$\hat{p}_{\text{H}}(t)$的演化方程, 但是我们可以使用Heisenberg运动方程来求解他, 而且很简单, 因为对易, 我们直接有:
 \begin{equation}
@@ -573,15 +573,177 @@ Heisenbg绘景的变化方法还是适用的:
 也就是说$\hat{p}_{\text{H}}(t)$是一个不随时间变化的算符.
 这下我们就能求解$\hat{x}_{\text{H}}(t)$了:
 \begin{equation}
-  \hat{x}_{\text{H}}(t) = \hat{x}_{\text{H}}(t_0) + \frac{2}{m} \hat{p}_{\text{H}}(t_0) (t - t_0)
+  \hat{x}_{\text{H}}(t) = \hat{x}_{\text{H}}(t_0) + \frac{\hat{p}_{\text{H}}(t_0)}{m}  (t - t_0)
 \end{equation}
 \fr{这实际上与我们经典力学中的结果高度相似}.
 
+根据这个例子, 我们也注意到, 虽然理论很优雅, 但是有几个问题还是无法系统性的解决:
+\begin{enumerate}
+\item 我们还是没办法解决Hamiltonian出现在指数上的这个问题, 因为一旦出现在指数上, 就得无穷级数展开.
+\item 我们要计算大量对易, 而且计算这些对易也完全由$\hat{U}$决定.
+\end{enumerate}
+所以Heisenberg绘景也不比Schrödinger绘景好多少.
+
+这样我们就有了一个折中的办法, 就是\fr{将Schrödinger绘景和Heisenberg绘景结合起来}, 也就是\fr{相互作用绘景} (interaction picture).
+相互作用绘景实际上就是为了能使用扰动方法来展开Dyson级数的一种妥协.
+我们现在聚焦在Schrödinger绘景, 然后为了篇幅, 就不特意写出来下标了.
+我们现在从$\hat{U}^\dagger$的意义入手:
+\begin{equation}
+	\hat{U}^\dagger(t,t_0) \ket{\Psi;t} = \hat{U}^\dagger(t, t_0)\hat{U}(t, t_0) \ket{\Psi;0} = \ket{\Psi;0}
+\end{equation}
+如果是不含时的Hamiltonian问题, 我们有:
+\begin{equation}
+	\hat{U}_0(t, t_0) = \exp(-\frac{\mathrm{i}}{\hbar} \hat{H}_0 (t-t_0))
+\end{equation}
+现在引入含时问题: $\hat{H}(t) = \hat{H}_0 + \delta\hat{H}(t)$, 其中$\hat{H}_0$是一个不随时间变化的Hamiltonian, $\delta\hat{H}(t)$是一个随时间变化的项.
+我们选择不把$\ket{\Psi;t}$完全的通过$\hat{U}^\dagger(t,t_0)$算符完全的还原到$t_0$时刻的态.
+退而求其次, 我们引入:
+\begin{equation}
+	\ket{\tilde{\Psi};t} = \exp(\frac{i}{\hbar} \hat{H}^{(0)} t) \ket{\Psi;t}
+\end{equation}
+就是说, 我们部分地把$\ket{\Psi;t}$利用不含时的$\hat{H}_0$, 还原到一个新态$\ket{\tilde{\Psi};t}$.
+当然, 在$t=0$的时候, 我们总有:
+\begin{equation}
+	\ket{\tilde{\Psi};0} = \ket{{\Psi};0}
+\end{equation}
+现在试着找到$\ket{\tilde{\Psi};t}$, 我们计算:
+\begin{equation}
+	i\hbar \pdv{}{t} \ket{\tilde{\Psi};t} = -\hat{H}_0 \exp(\frac{i}{\hbar} \hat{H}_0 t) \ket{{\Psi};t} + \exp(\frac{i}{\hbar} \hat{H}_0 t) i\hbar \pdv{}{t}\ket{{\Psi};t}
+\end{equation}
+利用$\ket{{\Psi};t}$的Schrödinger方程:
+\begin{equation}
+	i\hbar \pdv{}{t} \ket{\tilde{\Psi};t} = -\hat{H}_0\ket{\tilde{\Psi};t} + \exp(\frac{i}{\hbar} \hat{H}_0 t) \pqty{\hat{H}_0+\delta\hat{H}(t)}\ket{{\Psi};t}
+\end{equation}
+把最后一项的$\ket{{\Psi};t}$变掉:
+\begin{small}
+\begin{equation}
+	i\hbar \pdv{}{t} \ket{\tilde{\Psi};t} = \bqty{ -\hat{H}_0 + \exp(\frac{i}{\hbar} \hat{H}_0 t) \pqty{\hat{H}_0+\delta\hat{H}(t)} \exp(-\frac{i}{\hbar} \hat{H}_0 t) } \ket{\tilde{\Psi};t}
+\end{equation}
+\end{small}
+注意中括号里第二项, 完全可以和第一个消去:
+\begin{equation}
+	i\hbar \pdv{}{t} \ket{\tilde{\Psi};t} = \exp(\frac{i}{\hbar} \hat{H}_0 t) \delta\hat{H}(t) \exp(-\frac{i}{\hbar} \hat{H}_0 t) \ket{\tilde{\Psi};t}
+\end{equation}
+如果我们再定义一个新的绘景:
+\begin{equation}
+	\delta{\tilde{H}}(t)=\exp(\frac{i}{\hbar} \hat{H}_0 t) \delta\hat{H}(t) \exp(-\frac{i}{\hbar} \hat{H}_0 t)
+\end{equation}
+我们就可以把这个新的态$\ket{\tilde{\Psi};t}$也找到一个演化方程:
+\begin{equation}
+	i\hbar \pdv{}{t} \ket{\tilde{\Psi};t} = \delta\tilde{H}(t)\ket{\tilde{\Psi};t}
+\end{equation}
+这个绘景被成为相互作用绘景.
 
 
+\begin{definition}[][相互作用绘景]
+  相互作用绘景是将Schrödinger绘景和Heisenberg绘景结合起来的一种方法, 他将态和算符都随着时间演化.
+  我们的一般的Hamiltonian可以分成两部分:
+  \begin{equation}
+    \hat{H}_{\text{S}}(t) = \hat{H}_{0, \text{S}} + V_{\text{S}}(t)
+  \end{equation}
+  然后我们可以定义相互作用绘景下的算符:
+  \begin{equation}
+    \hat{A}_{\text{I}}(t) = \hat{U}_0^\dagger(t,t_0) \hat{A}_{\text{S}}(t) \hat{U}_0(t,t_0)
+  \end{equation}
+  其中$\hat{U}_0(t,t_0)$是已知可解的不含时的Hamiltonian给出的时间演化算符, $\hat{A}_{\text{S}}(t)$是Schrödinger绘景下的算符.
+  态的演化由如下方程给出:
+  \begin{equation}
+    i\hbar \pdv{}{t} \ket{\Psi_I;t} = \hat{V}_{\text{I}}(t)\ket{\Psi_I;t}
+  \end{equation}
+  然后我们通过逆变换找到$\ket{\Psi;t}$:
+  \begin{equation}
+    \ket{\Psi;t} = \exp(-\frac{i}{\hbar} \hat{H}_0 t) \ket{\Psi_I;t}
+  \end{equation}
+\end{definition}
+我们不再使用$\ket{\tilde{\Psi};t}$ ,$\tilde{\hat{A}}$, 而是使用$\ket{\Psi_I;t}$, $\hat{A}_{\text{I}}(t)$了.
 
 
+有一个非常简单清晰的例子, 就是NMR效应.
+一个磁距在磁场中的Hamiltonian写为:
+\begin{equation}
+	\hat{H} = \omega_x \hat{S}_x + \omega_y \hat{S}_y + \omega_z \hat{S}_z
+\end{equation}
+首先我们加一个$B_z$, 产生一个不含时的Hamiltonian:
+\begin{equation}
+	\hat{H}_0 = \omega_0 \hat{S}_z
+\end{equation}
+然后在加入旋转磁场:
+\begin{equation}
+	\hat{H}_{\text{I}}(t)=\Omega \pqty{\hat{S}_x\cos\omega_0t+\hat{S}_y\sin\omega_0t}
+\end{equation}
+假设磁距一开始的态为:$\ket{\Psi;0}$, $t$时刻他的态是什么?
+立刻使用相互作用绘景:
+\begin{equation}
+	\hat{H}_{\text{I}}(t) = \exp(\frac{i}{2} \omega_0t \sigma_z )\Omega \pqty{\hat{S}_x\cos\omega_0t+\hat{S}_y\sin\omega_0t}\exp(-\frac{i}{2} \omega_0t \sigma_z )
+\end{equation}
+处理这些Pauli矩阵可以使用附录A中的Pauli乘法表格.
+我们有:
+\begin{equation}
+	\hat{H}_{\text{I}}(t) = \Omega \hat{S}_x
+\end{equation}
+这就不是个含时的东西, 很好! 我们立刻写出:
+\begin{equation}
+	\ket{\Psi_{\text{I}};t} = \exp(-\frac{i}{\hbar}\hat{H}_{\text{I}} t )\ket{\Psi_{\text{I}};0} = \exp(-\frac{i}{2}\Omega t \sigma_x )\ket{\Psi_{\text{I}};0}
+\end{equation}
+然后再变回去:
+\begin{equation}
+	\ket{\Psi;t} = \exp(-\frac{i}{2}\omega_0 t \sigma_z )\exp(-\frac{i}{2}\Omega t \sigma_x )\ket{\Psi;0}
+\end{equation}
 
+现在我们来用相互作用绘景来解决之前说的Dyson级数的问题.
+当然, 我们必须承认\fr{我们还得依赖于微扰的方法, 不能处理强扰动问题}.
+我们的起点是把Hamiltonian分成两部分:
+\begin{equation}
+  \hat{H} = \hat{H}_0 + \hat{V}(t)
+\end{equation}
+这次我们使用了$\hat{V}(t)$来表示时间相关的扰动, 和其他文献对应起来, 其中我们的$\hat{H}_0$是一个不随时间变化的Hamiltonian, 而且本征谱可解.
+使用相互作用绘景, 我们有:
+\begin{equation}
+  \hat{H}_{\text{I}}(t) = \hat{U}_0^\dagger(t,t_0) \hat{V}(t) \hat{U}_0(t,t_0)
+\end{equation}
+态变成:
+\begin{equation}
+  \ket{\Psi_{\text{I}};t} = \hat{U}_0^\dagger(t,t_0) \ket{\Psi_{\text{S}};t}
+\end{equation}
+态的演化满足:
+\begin{equation}
+  \mathrm{i}\,\hbar \pdv{}{t} \ket{\Psi_{\text{I}};t} = \hat{V}_{\text{I}}(t) \ket{\Psi_{\text{I}};t}
+\end{equation}
+迄今为止, 我们就是重新抄了一遍定义.
+但是我们注意到:
+\begin{equation}
+  \ket{\Psi_{\text{I}};t} = \hat{U}_{\text{I}}(t,t_0) \ket{\Psi_{\text{I}};t_0}
+\end{equation}
+这个还是可以迭代求解, 从零阶开始:
+\begin{equation}
+  \hat{U}_{\text{I}}^{(0)}(t,t_0) = \mathbb{I}
+\end{equation}
+第一阶:
+\begin{equation}
+  \hat{U}_{\text{I}}^{(1)}(t,t_0) = \mathbb{I} + \frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1}
+\end{equation}
+第二阶:
+\begin{align}
+  \hat{U}_{\text{I}}^{(2)}(t,t_0) &= \mathbb{I} + \frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1} + \frac{1}{(\mathrm{i}\,\hbar)^2} \int_{t_0}^{t} \int_{t_0}^{t_1} \hat{V}_{\text{I}}(t_1) \hat{V}_{\text{I}}(t_2) \dd{t_2} \dd{t_1}
+\end{align}
+第三阶:
+\begin{align}
+  \hat{U}_{\text{I}}^{(3)}(t,t_0) &= \mathbb{I} + \frac{1}{\mathrm{i}\,\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1} + \frac{1}{(\mathrm{i}\,\hbar)^2} \int_{t_0}^{t} \int_{t_0}^{t_1} \hat{V}_{\text{I}}(t_1) \hat{V}_{\text{I}}(t_2) \dd{t_2} \dd{t_1} \\
+  &\quad + \frac{1}{(\mathrm{i}\,\hbar)^3} \int_{t_0}^{t} \int_{t_0}^{t_1} \int_{t_0}^{t_2} \hat{V}_{\text{I}}(t_1) \hat{V}_{\text{I}}(t_2) \hat{V}_{\text{I}}(t_3) \dd{t_3} \dd{t_2} \dd{t_1}
+\end{align}
+依次类推到第$n$阶, 我们有:
+\begin{equation}
+  \hat{U}_{\text{I}}^{(n)}(t,t_0) = \mathbb{I} + \sum_{k=1}^{n} \frac{1}{(\mathrm{i}\,\hbar)^k} \int_{t_0}^{t} \int_{t_0}^{t_1} \cdots \int_{t_0}^{t_{(k-1)}} \hat{V}_{\text{I}}(t_1) \hat{V}_{\text{I}}(t_2) \cdots \hat{V}_{\text{I}}(t_k) \dd{t_k} \dd{t_{k-1}} \cdots \dd{t_1}
+\end{equation}
+当$n$趋于无穷大时, 我们就得到了Dyson级数:
+%==========
+\begin{fancybox}
+\begin{equation}
+  \hat{U}_{\text{I}}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1} \right)
+\end{equation}
+这个就是相互作用绘景下的时间演化算符.
+\end{fancybox}
+%==========
 
 
 %====================
