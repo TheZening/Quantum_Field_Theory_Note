@@ -520,7 +520,7 @@ Heisenbg绘景的变化方法还是适用的:
   我们对这个式子求导, 得到:
   \begin{align}
     \pdv{\hat{A}_{\text{H}}(t)}{t} &= \pdv{\hat{U}(t,t_0)}{t} \hat{A}_{\text{S}}(t) \hat{U}^\dagger(t,t_0) + \hat{U}(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}^\dagger(t,t_0) + \hat{U}(t,t_0) \hat{A}_{\text{S}}(t) \pdv{\hat{U}^\dagger(t,t_0)}{t} \\
-    &= -\frac{\mathrm{i}\,}{\hbar} \hat{H}_{\text{H}}(t) \hat{A}_{\text{H}}(t) + \frac{\mathrm{i}\,}{\hbar} \hat{A}_{\text{H}}(t) \hat{H}_{\text{H}}(t) + \mathrm{i}\,\hbar \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
+    &= -\frac{\mathrm{i}\,}{\hbar} \hat{H}_{\text{H}}(t) \hat{A}_{\text{H}}(t) + \frac{\mathrm{i}\,}{\hbar} \hat{A}_{\text{H}}(t) \hat{H}_{\text{H}}(t) + \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
   \end{align}
   其中我们使用了Hamiltonian算符在Heisenberg绘景下的形式:
   \begin{equation}
@@ -538,11 +538,44 @@ Heisenbg绘景的变化方法还是适用的:
 \end{proof}
 
 
-
-
-
-当然了, 这个还是形式意义大于实际意义, 因为时间演化算符具体展开出来是非常困难的.
-
+我们现在考虑一个超简单例子, 比如我们考虑一个不随时间变化的算符$\hat{x}_{\text{S}}$, 然后我们的Hamiltonian是一个自由粒子Hamiltonian, 也就是:
+\begin{equation}
+  \hat{H}_{\text{S}} = \frac{\hat{p}^2_{\text{S}}}{2m}
+\end{equation}
+那么我们有:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\hat{x}_{\text{H}}(t)}{t} = [\hat{x}_{\text{H}}(t), \hat{H}_{\text{H}}(t)]
+\end{equation}
+我们现在需要计算如下的对易:
+\begin{equation}
+  [\hat{x}_{\text{H}}(t), \hat{H}_{\text{H}}(t)] = \left[\hat{U}(t,t_0) \hat{x}_{\text{S}}(t) \hat{U}^\dagger(t,t_0), \frac{\hat{p}^2}{2m}\right] = \frac{1}{2m} \left[\hat{U}(t,t_0) \hat{x}_{\text{S}}(t) \hat{U}^\dagger(t,t_0), \hat{p}^2\right]
+\end{equation}
+因为$\hat{U}(t,t_0)$和$\hat{U}^\dagger(t,t_0)$是时间演化算符, 而且他们的指数内只包含动能项, 所以他和动量算符$\hat{p}$是对易的, 也就是:
+\begin{equation}
+  \left[\hat{U}(t,t_0) \hat{x}_{\text{S}}(t) \hat{U}^\dagger(t,t_0), \hat{p}^2\right] = \left[ \hat{U}(t,t_0) (\hat{x}_{\text{S}} \hat{p}^2 - \hat{p}^2 \hat{x}_{\text{S}}) \hat{U}^\dagger(t,t_0) \right]
+\end{equation}
+利用基本对易关系:
+\begin{equation}
+  [\hat{x}, \hat{p}] = \mathrm{i}\, \hbar
+\end{equation}
+我们获得:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\hat{x}_{\text{H}}(t)}{t} = \frac{2 \mathrm{i}\, \hbar}{m} \hat{p}_{\text{H}}(t)
+\end{equation}
+这还是一个微分方程, 我们如果考虑从$t_0$到$t$的演化, 那么我们可以将他积分:
+\begin{equation}
+  \hat{x}_{\text{H}}(t) - \hat{x}_{\text{H}}(t_0) = \frac{2}{m} \int_{t_0}^{t} \hat{p}_{\text{H}}(t') \dd{t'}
+\end{equation}
+这里有出现一个问题, 我们还没说$\hat{p}_{\text{H}}(t)$的演化方程, 但是我们可以使用Heisenberg运动方程来求解他, 而且很简单, 因为对易, 我们直接有:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\hat{p}_{\text{H}}(t)}{t} = [\hat{p}_{\text{H}}(t), \hat{H}_{\text{H}}(t)] = 0
+\end{equation}
+也就是说$\hat{p}_{\text{H}}(t)$是一个不随时间变化的算符.
+这下我们就能求解$\hat{x}_{\text{H}}(t)$了:
+\begin{equation}
+  \hat{x}_{\text{H}}(t) = \hat{x}_{\text{H}}(t_0) + \frac{2}{m} \hat{p}_{\text{H}}(t_0) (t - t_0)
+\end{equation}
+\fr{这实际上与我们经典力学中的结果高度相似}.
 
 
 
