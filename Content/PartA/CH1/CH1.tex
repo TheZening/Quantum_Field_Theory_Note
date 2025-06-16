@@ -498,6 +498,44 @@ Weyl序有一个特别优势:
   态是不随时间演化的, 就一直是$\ket{\psi;t_0}$.
 \end{definition}
 \fr{这并不是否定Schorödinger绘景下的算符可以带时间}, 因为有的算符就是随时间变化的.
+Heisenbg绘景的变化方法还是适用的:
+\begin{equation}
+  \hat{A}_{\text{H}}(t) = \hat{U}(t,t_0) \hat{A}_{\text{S}}(t) \hat{U}^\dagger(t,t_0)
+\end{equation}
+这个里面的$t_0$就告诉了我们, 我们选择了$t_0$时刻的Schrödinger绘景下的态作为我们Heisenberg绘景下不再随着时间变化的态.
+
+当然了, 态不随着时间的演化了, 算符就要随着时间演化了:
+\begin{theorem}[][Heisenberg运动方程]
+  在Heisenberg绘景下, 算符的时间演化满足如下方程:
+  \begin{equation}
+    \mathrm{i}\, \hbar \pdv{\hat{A}_{\text{H}}(t)}{t} = [\hat{A}_{\text{H}}(t), \hat{H}_{\text{H}}(t)] + \mathrm{i}\,\hbar \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
+  \end{equation}
+  其中$\hat{H}_{\text{H}}(t)$是Hamiltonian算符在Heisenberg绘景下的形式, $\hat{A}_{\text{S}}(t)$是Schrödinger绘景下的算符.
+\end{theorem}
+\begin{proof}
+  我们考虑Heisenberg绘景下的算符$\hat{A}_{\text{H}}(t)$, 他是由Schrödinger绘景下的算符$\hat{A}_{\text{S}}(t)$通过时间演化算符$\hat{U}(t,t_0)$得到的:
+  \begin{equation}
+    \hat{A}_{\text{H}}(t) = \hat{U}(t,t_0) \hat{A}_{\text{S}}(t) \hat{U}^\dagger(t,t_0)
+  \end{equation}
+  我们对这个式子求导, 得到:
+  \begin{align}
+    \pdv{\hat{A}_{\text{H}}(t)}{t} &= \pdv{\hat{U}(t,t_0)}{t} \hat{A}_{\text{S}}(t) \hat{U}^\dagger(t,t_0) + \hat{U}(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}^\dagger(t,t_0) + \hat{U}(t,t_0) \hat{A}_{\text{S}}(t) \pdv{\hat{U}^\dagger(t,t_0)}{t} \\
+    &= -\frac{\mathrm{i}\,}{\hbar} \hat{H}_{\text{H}}(t) \hat{A}_{\text{H}}(t) + \frac{\mathrm{i}\,}{\hbar} \hat{A}_{\text{H}}(t) \hat{H}_{\text{H}}(t) + \mathrm{i}\,\hbar \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
+  \end{align}
+  其中我们使用了Hamiltonian算符在Heisenberg绘景下的形式:
+  \begin{equation}
+    \hat{H}_{\text{H}}(t) = \hat{U}(t,t_0) \hat{H}_{\text{S}}(t) \hat{U}^\dagger(t,t_0)
+  \end{equation}
+  以及时间演化算符的定义:
+  \begin{equation}
+    \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{H}_{\text{S}}(t') \dd{t'} \right)
+  \end{equation}
+  将上面的式子整理一下, 我们就得到了Heisenberg运动方程:
+  \begin{equation}
+    \mathrm{i}\, \hbar \pdv{\hat{A}_{\text{H}}(t)}{t} = [\hat{A}_{\text{H}}(t), \hat{H}_{\text{H}}(t)] + \mathrm{i}\,\hbar \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
+  \end{equation}
+  这个方程告诉我们, 在Heisenberg绘景下, 算符的时间演化是由Hamiltonian算符和Schrödinger绘景下的算符的时间导数共同决定的.
+\end{proof}
 
 
 
