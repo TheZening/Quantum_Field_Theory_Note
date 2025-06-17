@@ -279,7 +279,7 @@
 \end{enumerate}
 一个基本原理不能被混淆: \fr{无量纲的数在任何单位制下都是无量纲的, 选择单位制只是为了方便计算和表达, 物理量的本质不变}.
 当然我们国际单位制下的量和在自然单位制下的量数值是不相同的.
-我们再表格Table.~\ref{tab:natural_units_physical_constants}中列出一些重要的物理常数在自然单位制下的数值.
+我们在表格Table.~\ref{tab:natural_units_physical_constants}~中列出一些重要的物理常数在自然单位制下的数值.
 \begin{table}[h!]
 \centering
 \begin{tabular}{|l|l|}
@@ -328,12 +328,6 @@
 \label{CH1 S3 Quantum mechanics}
 %====================
 %====================
-% 概率密度, 概率流
-% Heisenberg方法
-% 薛定谔方程, 时间演化算符
-% 全同粒子假设
-% Fock空间
-% 相对论量子力学
 初期对于量子力学的讨论, 主要是对于经典力学理论的量子化, 也就是将经典力学的物理量变成动力学量, observables, 然后我们可以通过测量来获得物理量的数值:
 \begin{equation}
   \expval{\mathcal{O}} = \mel**{\psi}{\mathcal{O}}{\psi}
@@ -1052,15 +1046,133 @@ $\hat{H}_0$作用在态上是可以直接写出来的:
 
 %====================
 %====================
+\newpage
 \section{经典场论}
 \label{CH1 S6 Classical field theory}
 %====================
 %====================
+我们从弦的振动开始, 来体会一下什么是场论.
+开宗明义的说, 场论是一个自由度无穷多的理论.
+空间看成连续的，每一点都携带一个变量, 这个变量可以是标量, 向量, 张量等等, 一个多粒子系统中, 我们自然有无穷多个自由度.
+不管是流体力学, 还是连续介质力学, 还是电磁场, 我们都必须放弃一个观念, 就是讨论粒子的轨迹.
+因为如果我们非要考虑一个粒子, 他在整个体系的中的动力学行为是基本没法求解的, 你没办法考虑每次碰撞, 尽管Newton方程是可以求解的.
 
 
+于是我们干脆放弃一个粒子的方法了, 这就是热力学, 统计力学, 流体力学, 连续介质力学的起源.
+就想我们之前讨论概率守恒定律那样, 我们考虑一个体积, 然后考虑我们关心的力学量在空间中的分布.
+我们再这一节中, 先不考虑热力学和统计力学, 就是完全的力学系统.
+实际上, 我们已经在初学力学的时候, 就已经接触过波动这个概念了.
+波动是单粒子振动在空间和时间上的延续, 而这个抽象的概念, 就是各种场论的起源, 也是场论的核心思想: 在时空掀起的一片涟漪, 在因果的指导下, 影响到这个时空中的每一个点.
+\begin{definition}[][场]
+  场是一个在空间和时间上连续的物理量, 他可以是标量, 向量, 张量等.
+\end{definition}
 
 
-
-
-
-
+我们从一根弦的振动入手, 一根弦长度为$L$, 质量为$m$, 这都是完全宏观能表征出来的量, 我们立刻知道他的线密度为:
+\begin{equation}
+  \mu = \frac{m}{L}
+\end{equation}
+实际上, 一个弦就是无数个质点连接到一起.
+从而, 我们就获得了一个1+1D(一维空间, 一维时间)的场论, 我们观察的这个系统就是$L$长度的弦, 从而我们可以考察弦上每个点的位移, 也就是一个标量场:
+\begin{equation}
+  \phi(x,t) = \text{弦上第$x$点在时刻$t$的位移}
+\end{equation}
+当然也可以考虑弦上每个点的速度, 也就是一个向量场:
+\begin{equation}
+  \bm{v}(x,t) = \text{弦上第$x$点在时刻$t$的速度}
+\end{equation}
+想求解这些场的形式, 我们必须知道一个动力学方程, 就是场的演化方程.
+根据经典力学的标准思路, 我们应该先想办法写出系统的Lagrangian, 然后根据最小作用量原理写出动力学方程.
+对于场系统, 我们就要考虑Lagrangian密度$\mathcal{L}$.
+动能项是很好写的:
+\begin{equation}
+  \mathcal{T} = \frac{1}{2} \mu \pqty{\pdv{\phi}{t}}^2
+\end{equation}
+势能项是有点复杂的, 静力学告诉我们势能有张力和形变给出, 张力是外界条件给出来的, $T$, 形变是弦的位移给出的.
+没有外力作用的时候, 一小段微元弦的长度是 $\dd{l}$, 有了张力之后, 我们有 $\dd{l'} = \sqrt{\dd{x}^2 + \dd{\phi}^2}$.
+从而我们有形变为:
+\begin{equation}
+  \dd{l'}-\dd{l} = \sqrt{\dd{x}^2 + \dd{\phi}^2} - \dd{x} = \sqrt{1 + \pqty{\pdv{\phi}{x}}^2} - 1 \approx \frac{1}{2} \pqty{\pdv{\phi}{x}}^2
+\end{equation}
+从而我们的Lagrangian密度为:
+\begin{equation}
+  \mathcal{L} = \frac{1}{2} \mu \pqty{\pdv{\phi}{t}}^2 - \frac{1}{2} T \pqty{\pdv{\phi}{x}}^2
+\end{equation}
+当然了, 我们在这个推导里面, 假设了弦振幅远小于长度, 也就是$\phi \ll L$, 这就是小振幅近似.
+现在我们可以根据Euler-Lagrange方程写出动力学方程:
+\begin{equation}
+  \pdv{}{t} \pqty{\pdv{\mathcal{L}}{\pdv{\phi}{t}}} - \pdv{}{x} \pqty{\pdv{\mathcal{L}}{\pdv{\phi}{x}}} = 0
+\end{equation}
+将Lagrangian密度代入, 我们有:
+\begin{equation}
+  \mu \pdv[2]{\phi}{t} - T \pdv[2]{\phi}{x} = 0
+\end{equation}
+整理一下, 我们有弦的振动方程:
+\begin{equation}
+  \pdv[2]{\phi}{t} = v^2 \pdv[2]{\phi}{x} \quad v = \sqrt{\frac{T}{\mu}}
+\end{equation}
+这自然是大家很熟悉的方程了.
+当然了, 求解方程必须考虑使用边界条件, 我们考虑最简单的一种情况, 就是两端固定的弦, 也就是$\phi(0,t) = \phi(L,t) = 0$.
+我们可以使用分离变量法, 也就是假设解的形式为:
+\begin{equation}
+  \phi(x,t) = X(x)T(t)
+\end{equation}
+将这个形式代入方程, 我们有:
+\begin{equation}
+  \frac{1}{T} \pdv[2]{T}{t} = v^2 \frac{1}{X} \pdv[2]{X}{x}
+\end{equation}
+两边都是常数, 我们设为$-\omega^2$, 那么我们有两个方程:
+\begin{align}
+  \pdv[2]{T}{t} + \omega^2 T &= 0 \quad \pdv[2]{X}{x} + \frac{\omega^2}{v^2} X &= 0
+\end{align}
+第一个方程的解是:
+\begin{equation}
+  T(t) = A \cos(\omega t) + B \sin(\omega t)
+\end{equation}
+第二个方程的解是:
+\begin{equation}
+  X(x) = C \cos\pqty{\frac{\omega}{v} x } + D \sin\pqty{\frac{\omega}{v} x}
+\end{equation}
+我们有:
+\begin{equation}
+  \phi(x,t) = \pqty{A \cos(\omega t) + B \sin(\omega t)} \pqty{C \cos\pqty{\frac{\omega}{v} x} + D \sin\pqty{\frac{\omega}{v} x}}
+\end{equation}
+现在我们需要考虑边界条件, 也就是$\phi(0,t) = \phi(L,t) = 0$.
+首先考虑$\phi(0,t) = 0$, 我们有:
+\begin{equation}
+  \phi(0,t) = \pqty{A \cos(\omega t) + B \sin(\omega t)} \pqty{C} = 0
+\end{equation}
+这就要求$C=0$, 所以我们有:
+\begin{equation}
+  \phi(x,t) = \pqty{A \cos(\omega t) + B \sin(\omega t)} D \sin\pqty{\frac{\omega}{v} x}
+\end{equation}
+然后考虑$\phi(L,t) = 0$, 我们有:
+\begin{equation}
+  \phi(L,t) = \pqty{A \cos(\omega t) + B \sin(\omega t)} D \sin\pqty{\frac{\omega}{v} L} = 0
+\end{equation}
+这就要求$\sin\pqty{\frac{\omega}{v} L} = 0$, 所以我们有:
+\begin{equation}
+  \frac{\omega}{v} L = n\pi \quad n = 1, 2, 3, \ldots
+\end{equation}
+从而我们有:
+\begin{equation}
+  \omega_n = \frac{n\pi v}{L} \quad n = 1, 2, 3, \ldots
+\end{equation}
+于是我们有:
+\begin{equation}
+  \phi_n(x,t) = \left( A_n \cos\pqty{\frac{n\pi v}{L} t}  + B_n \sin\pqty{\frac{n\pi v}{L} t} \right) \sin\pqty{\frac{n\pi}{L} x}
+\end{equation}
+我们允许的频率就是驻波出现的条件:
+\begin{equation}
+  L = \frac{\lambda}{2} n \quad n = 1, 2, 3, \ldots \Rightarrow \omega_n = \frac{n\pi v}{L} = \frac{n\pi}{\lambda}
+\end{equation}
+一模一样的.
+所以什么是本征模式(eigenmodes)?
+\begin{definition}[][本征振动模式]
+  本征振动模式是指在边界条件限制下, 频率固定的振动模式, 也就是驻波.
+  如果我们的系统没有外力作用, 那么弦上波动的形式必然是本征模式的线性叠加.
+  如果初始条件正好满足一个本征模式, 那么弦就会一直按照这个模式振动.
+\end{definition}
+当然了, 就像是一个向量是本征向量的线性组合, 那么任意一个场都是本征模式的线性组合.
+就像是Fourier变换, 一个时域上的信号可以看成是频域上本征模式的线性组合.
+只不过场是时空的函数了, 所以他可以被看成是频域-动量空间的本征模式的线性组合.
