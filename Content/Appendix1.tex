@@ -22,3 +22,27 @@
   \label{Tab: Appendix_1_Pauli_Matrix_Multiplication}
 	\caption{Pauli矩阵相乘图}
 \end{table}
+
+%====================
+%====================
+\section{Barker-Campell-Hausdorff公式}
+%====================
+%====================
+如果$\hat{A}$和$\hat{B}$是两个有界算符, 我们有:
+\begin{equation}
+	e^{\hat{A}} e^{\hat{B}} = e^{\hat{Z}}
+\end{equation}
+其中$\hat{Z}$是$\hat{A}$和$\hat{B}$的Barker-Campell-Hausdorff公式:
+\begin{equation}
+	\hat{Z} = \hat{A} + \hat{B} + \frac{1}{2} [\hat{A}, \hat{B}] + \frac{1}{12} [\hat{A}, [\hat{A}, \hat{B}]] + \frac{1}{12} [\hat{B}, [\hat{A}, \hat{B}]] - \frac{1}{24} [\hat{A}, [\hat{B}, [\hat{A}, \hat{B}]]] + \cdots
+\end{equation}
+这个公式可以用来计算两个算符的指数的乘积. 要加到无穷阶才能收敛, 我们实际上使用的是几项近似, 很少算到后面的阶数.
+实际上, 证明这个公式是非常复杂的.
+我们最关心的一种特殊情况就是满足如下的条件:
+\begin{equation}
+	[\hat{A}, [\hat{A}, \hat{B}]] = 0 \quad \text{同时} \quad [\hat{B}, [\hat{A}, \hat{B}]] = 0
+\end{equation}
+我们才能获得一个更简单的公式:
+\begin{equation}
+	e^{\hat{A}} e^{\hat{B}} = e^{\hat{A} + \hat{B} + \frac{1}{2} [\hat{A}, \hat{B}]}
+\end{equation}

@@ -143,6 +143,45 @@
  k\cdot x \equiv k^\mu x_\mu = k^0 x^0 - \bm{k} \cdot \bm{x} = \omega t - \bm{k} \cdot \bm{x} = \omega t - k_x x - k_y y - k_z z
 \end{equation}
 
+
+另外一个和Fourier变换非常相关的一个恒等式是$\delta$函数的定义.
+我们还是从时间变量开始:
+\begin{equation}
+  \delta(t-t_0) = \int_{-\infty}^{+\infty} e^{-\mathrm{i}\, \omega (t - t_0)} \dd{\omega}
+\end{equation}
+同时也有:
+\begin{equation}
+  \delta(\omega-\omega_0) = \int_{-\infty}^{+\infty} e^{-\mathrm{i}\, t (\omega-\omega_0)} \dd{t}
+\end{equation}
+从空间变量出发, 我们可以定义:
+\begin{equation}
+  \delta^{(3)}(\bm{x}-\bm{x}_0) = \int_{\mathbb{R}^3} e^{+\mathrm{i}\, \bm{k} \cdot (\bm{x} - \bm{x}_0)} \dd[3]{k}
+\end{equation}
+当然反过来就是关于$\bm{k}$的:
+\begin{equation}
+  \delta^{(3)}(\bm{k}-\bm{k}_0) = \int_{\mathbb{R}^3} e^{+\mathrm{i}\, \bm{x} \cdot (\bm{k} - \bm{k}_0)} \dd[3]{x}
+\end{equation}
+综合起来, 我们有:
+\begin{equation}
+  \delta^{(4)}(x-x_0) = \int_{\mathbb{R}^4} e^{+\mathrm{i}\, k \cdot (x - x_0)} \dd[4]{k}
+\end{equation}
+\begin{equation}
+  \delta^{(4)}(k-k_0) = \int_{\mathbb{R}^4} e^{+\mathrm{i}\, x \cdot (k - k_0)} \dd[4]{x}
+\end{equation}
+我们必须明确的指定$\delta^{(n)}$的维度, 其中$n$是维度.
+同样的, 还有Fourier级数:
+\begin{equation}
+  f(\bm{x}) = \frac{1}{\sqrt{L_x L_y L_z}} \sum_{n_x=-\infty}^{+\infty} \sum_{n_y=-\infty}^{+\infty} \sum_{n_z=-\infty}^{+\infty} \tilde{f}_{n_x n_y n_z} e^{+\mathrm{i}\, \frac{2\pi}{L} (n_x x + n_y y + n_z z)}
+\end{equation}
+\begin{equation}
+  \tilde{f}_{n_x n_y n_z} = \frac{1}{\sqrt{L_x L_y L_z}} \int_0^{L_x} \int_0^{L_y} \int_0^{L_z} f(\bm{x}) e^{-\mathrm{i}\, \frac{2\pi}{L} (n_x x + n_y y + n_z z)} \dd[3]{x}
+\end{equation}
+从而我们有:
+\begin{equation}
+  \delta(\bm{x}-\bm{x}_0) = \frac{1}{L_x L_y L_z} \sum_{n_x=-\infty}^{+\infty} \sum_{n_y=-\infty}^{+\infty} \sum_{n_z=-\infty}^{+\infty} e^{\mathrm{i}\, \frac{2\pi}{L} (n_x (x-x_0) + n_y (y-y_0) + n_z (z-z_0))}
+\end{equation}
+
+
 接下来我们规定导数的几号, 我们的协变导数为:
 \begin{equation}
   \partial_\mu = \frac{\partial}{\partial x^\mu} = \left( \frac{\partial}{\partial x^0}, \frac{\partial}{\partial x^1}, \frac{\partial}{\partial x^2}, \frac{\partial}{\partial x^3} \right) = \left( \frac{\partial}{\partial t}, \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right) = \left(\pdv{}{x^0}, \nabla\right)
@@ -528,7 +567,7 @@ Weyl序有一个特别优势:
 \end{equation}
 我们考虑一般的情况, 就是$\hat{H}$是时间相关的, 也就是$\hat{H} = \hat{H}(t)$, 那么我们可以将时间演化算符写成如下的形式:
 \begin{equation}
-  \hat{U}(t,t_0) = \mathbb{1} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \hat{U}(t_1,t_0) \dd{t_1}
+  \hat{U}(t,t_0) = \mathbb{I} + \frac{1}{\mathrm{i}\, \hbar} \int_{t_0}^{t} \hat{H}(t_1) \hat{U}(t_1,t_0) \dd{t_1}
 \end{equation}
 我们考虑使用Picard迭代方法, 我们先不考虑积分右侧, 那自然就是迭代的第0阶:
 \begin{equation}
