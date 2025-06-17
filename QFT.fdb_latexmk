@@ -1,0 +1,14 @@
+# Fdb version 4
+["xdvipdfmx"] 0 "QFT.xdv" "QFT.pdf" "QFT" 0 -1
+  "QFT.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "QFT.pdf"
+  (rewritten before read)
+["xelatex"] 0 "/Users/cmp/Library/CloudStorage/Dropbox/Notes/Book/量子场论/QFT.tex" "QFT.xdv" "QFT" 0 -1
+  "/Users/cmp/Library/CloudStorage/Dropbox/Notes/Book/量子场论/QFT.tex" 0 -1 0 ""
+  "QFT.aux" 0 -1 0 "xelatex"
+  (generated)
+  "QFT.aux"
+  "QFT.log"
+  "QFT.xdv"
+  (rewritten before read)

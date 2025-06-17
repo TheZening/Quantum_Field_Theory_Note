@@ -408,6 +408,111 @@ Weyl序有一个特别优势:
 虽然他是一个线性方程, 就是两个解的线性组合$\psi_1 + \psi_2$仍然是解.
 但是求解这个方程可不简单, 尤其是势能$V(\hat{\bm{x}})$很复杂的时候, 这个在量子力学课程中已经有所涉及.
 所以我们一般考虑扰动方法求解, 不管是含时的还是不含时的.
+从流体力学的角度来看, 我们有一个起点, 就是发现粒子的概率在整个空间中是$1$:
+\begin{equation}
+  \int_{\mathbb{R}^3} \abs{\psi(\bm{x}; t)}^2 \dd[3]{x} = 1
+\end{equation}
+我们补充一点流体力学的概念.
+在流体力学中, 我们不关心单个粒子的运动, 而是关心流体的整体运动, 所以我们考虑流体的密度, 流体的速度, 流体的压力等.
+我们首先圈定一块儿控制体积, control volume, 然后我们考虑流体在这个控制体积内的运动, 注意, 控制体积是不随着时间变化的.
+当然是可以有流体从控制体积内流出, 也可以有流体从控制体积外流入.
+最重要的两个概念就是流体的密度和流体的速度, 我们用$\rho$表示流体的密度, $\bm{v}$表示流体的速度.
+我们只考虑最简单的一种流体力学, 就是粒子流, 如果是考虑电流, 就是每个电荷的流动, 如果是热力学流, 就是每个粒子带着热量的流动.
+
+
+如果我们考虑一个控制体积区域$V$, 他的边界记作$\partial V$ (边界是一个曲面, 如果是二维自然就是一条曲线了).
+我们定义曲面上的法向量为$\hat{n}(\bm{x})$, 其中$\bm{x} \in \partial S$.
+我们从质量的定义出发, 在时刻$t$, 我们有:
+\begin{equation}
+  M(t) = \int_V \rho(\bm{x}, t) \dd[3]{x}
+\end{equation}
+控制体积内如果没有源, 那么质量是守恒的.
+\begin{remark}
+  一个生活化的例子, 就是考虑一个水池, 如果水池里面没有水流入或者流出, 那么水池内的水量是守恒的.
+  当然了, 没有源的意思就是泳池里面没有水龙头.
+\end{remark} 
+所以控制体积中的质量守恒方程立刻翻译成, 任何质量的变化一定伴随着边界上流体的出入:
+\begin{equation}
+  \dv{M(t)}{t} + \int_{\partial V} \rho(\bm{x}, t) \bm{v}(\bm{x}, t) \cdot \hat{n}(\bm{x}) \dd{S} = 0
+\end{equation}
+第一项:
+\begin{equation}
+  \dv{M(t)}{t} = \int_V \pdv{\rho(\bm{x}, t)}{t} \dd[3]{x}
+\end{equation}
+第二项:
+\begin{equation}
+  \int_{\partial V} \rho(\bm{x}, t) \bm{v}(\bm{x}, t) \cdot \hat{n}(\bm{x}) \dd{S} = \int_V \nabla \cdot (\rho(\bm{x}, t) \bm{v}(\bm{x}, t)) \dd[3]{x}
+\end{equation}
+所以我们有:
+\begin{equation}
+  \int_V \left( \pdv{\rho(\bm{x}, t)}{t} + \nabla \cdot (\rho(\bm{x}, t) \bm{v}(\bm{x}, t)) \right) \dd[3]{x} = 0
+\end{equation}
+由于这个方程对于任意的控制体积$V$都成立, 所以
+\begin{equation}
+  \pdv{\rho(\bm{x}, t)}{t} + \nabla \cdot (\rho(\bm{x}, t) \bm{v}(\bm{x}, t)) = 0
+\end{equation}
+这个方程就是流体力学中的连续性方程, continuity equation.
+我们根据
+\begin{equation}
+  \dv{M(t)}{t} + \int_{\partial V} \rho(\bm{x}, t) \bm{v}(\bm{x}, t) \cdot \hat{n}(\bm{x}) \dd{S} = 0
+\end{equation}
+也可以定义质量流的概念: 粒子在单位时间内穿过指定曲面的总量.
+\begin{equation}
+  J = \int_{\partial V} \rho(\bm{x}, t) \bm{v}(\bm{x}, t) \cdot \hat{n}(\bm{x}) \dd{S} \quad \frac{\text{Kg}}{\text{s}}
+\end{equation}
+如果我们想定义每秒钟有多少千克的流体穿过单位面积, 那么我们可以定义质量流密度:
+\begin{equation}
+  \bm{j} = \rho(\bm{x}, t) \bm{v}(\bm{x}, t) \quad \frac{\text{Kg}}{\text{m}^2 \cdot \text{s}}
+\end{equation}
+这个就是流体力学中的质量流密度, mass flux density.
+从而我们的连续性方程被改写为:
+\begin{equation}
+  \pdv{\rho(\bm{x}, t)}{t} + \nabla \cdot \bm{j} = 0
+\end{equation}
+
+在量子力学中, 我们有类似的概念, 我们考虑粒子的概率密度, 也就是:
+\begin{equation}
+  \rho(\bm{x}, t) = \abs{\psi(\bm{x}, t)}^2
+\end{equation}
+我们可以计算一下概率密度随着时间的导数:
+\begin{equation}
+  \pdv{\rho(\bm{x}, t)}{t} = \pdv{}{t} \abs{\psi(\bm{x}, t)}^2 = \psi^*(\bm{x}, t) \pdv{\psi(\bm{x}, t)}{t} + \psi(\bm{x}, t) \pdv{\psi^*(\bm{x}, t)}{t}
+\end{equation}
+考虑含时的Schrödinger方程:
+\begin{equation}
+  \mathrm{i}\, \hbar \pdv{\psi(\bm{x}, t)}{t} = \left( -\frac{\hbar^2}{2m} \nabla^2 + V(\bm{x}) \right) \psi(\bm{x}, t)
+\end{equation}
+我们可以将他写成:
+\begin{equation}
+  \pdv{\psi(\bm{x}, t)}{t} = \frac{\mathrm{i}\, \hbar}{2m} \nabla^2 \psi(\bm{x}, t) + \frac{1}{\mathrm{i}\, \hbar} V(\bm{x}) \psi(\bm{x}, t)
+\end{equation}
+然后我们考虑他的共轭方程:
+\begin{equation}
+  \pdv{\psi^*(\bm{x}, t)}{t} = -\frac{\mathrm{i}\, \hbar}{2m} \nabla^2 \psi^*(\bm{x}, t) - \frac{1}{\mathrm{i}\, \hbar} V(\bm{x}) \psi^*(\bm{x}, t)
+\end{equation}
+将这两个方程代入到概率密度的时间导数中:
+\begin{align}
+  \pdv{\rho(\bm{x}, t)}{t} =& \psi^*(\bm{x}, t) \left( \frac{\mathrm{i}\, \hbar}{2m} \nabla^2 \psi(\bm{x}, t) + \frac{1}{\mathrm{i}\, \hbar} V(\bm{x}) \psi(\bm{x}, t) \right) \\
+  &+ \psi(\bm{x}, t) \left( -\frac{\mathrm{i}\, \hbar}{2m} \nabla^2 \psi^*(\bm{x}, t) - \frac{1}{\mathrm{i}\, \hbar} V(\bm{x}) \psi^*(\bm{x}, t) \right) \\
+  =& \frac{\mathrm{i}\, \hbar}{2m} \left( \psi^*(\bm{x}, t) \nabla^2 \psi(\bm{x}, t) - \psi(\bm{x}, t) \nabla^2 \psi^*(\bm{x}, t) \right) \\
+  &+ \frac{1}{\mathrm{i}\, \hbar} V(\bm{x}) \left( \psi^*(\bm{x}, t) \psi(\bm{x}, t) - \psi(\bm{x}, t) \psi^*(\bm{x}, t) \right) \\
+  =& \frac{\mathrm{i}\, \hbar}{2m} \left( \psi^*(\bm{x}, t) \nabla^2 \psi(\bm{x}, t) - \psi(\bm{x}, t) \nabla^2 \psi^*(\bm{x}, t) \right)
+\end{align}
+我们可以将这个方程写成:
+\begin{equation}
+  \pdv{\rho(\bm{x}, t)}{t} = \frac{\mathrm{i}\, \hbar}{2m} \nabla \cdot \left( \psi^*(\bm{x}, t) \nabla \psi(\bm{x}, t) - \psi(\bm{x}, t) \nabla \psi^*(\bm{x}, t) \right)
+\end{equation}
+我们可以定义一个概率流, probability flux, 也就是:
+\begin{equation}
+  \bm{j}(\bm{x}, t) = -\frac{\mathrm{i}\, \hbar}{2m} \left( \psi^*(\bm{x}, t) \nabla \psi(\bm{x}, t) - \psi(\bm{x}, t) \nabla \psi^*(\bm{x}, t) \right)
+\end{equation}
+这样我们之前的式子化简为:
+\begin{equation}
+  \pdv{\rho(\bm{x}, t)}{t} + \nabla \cdot \bm{j}(\bm{x}, t) = 0
+\end{equation}
+这个方程就是量子力学中的连续性方程, 也就是概率守恒方程.
+\fr{实际上, 我们完全可以根据流体力学对于$bm{j}$的定义, 以及Weyl序来获得一样的结果}.
+
 
 我们这里为了理论的完整性, 只是形式上的给出级数解, 方法是考虑时间演化算符:
 \begin{equation}
@@ -859,23 +964,51 @@ $\hat{H}_0$作用在态上是可以直接写出来的:
 \end{equation}
 
 
-
-
-
-
-
-
-
-
-
-
-%====================
-%====================
-\section{流体力学}
-\label{CH1 S5 Fluid mechanics}
-%====================
-%====================
-
+我们现在举个简单的例子, 就是考虑两个初态末态都是平面波的情况:
+\begin{equation}
+  \ket{\psi_{\text{i}}} = \frac{1}{\sqrt{L^3}} e^{\mathrm{i} \bm{k}_{\text{i}} \cdot \bm{x}} \quad \ket{\psi_{\text{f}}} = \frac{1}{\sqrt{L^3}} e^{\mathrm{i} \bm{k}_{\text{f}} \cdot \bm{x}}
+\end{equation}
+我们的能量守恒为:
+\begin{equation}
+  E_{\text{i}} = E_{\text{f}} \quad \Rightarrow \quad \frac{\hbar^2 k_{\text{i}}^2}{2m} = \frac{\hbar^2 k_{\text{f}}^2}{2m} \quad \Rightarrow \quad k_{\text{i}}^2 = k_{\text{f}}^2
+\end{equation}
+我们可以立刻写出来矩阵元:
+\begin{equation}
+  \mathcal{M}_{\text{fi}} = \mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}} = \frac{1}{L^3} \int e^{-\mathrm{i} \bm{k}_{\text{f}} \cdot \bm{x}} \hat{V} e^{\mathrm{i} \bm{k}_{\text{i}} \cdot \bm{x}} \dd[3]{x} = \frac{\tilde{V}(\bm{k}_{\text{f}} - \bm{k}_{\text{i}})}{L^3}
+\end{equation}
+从而我们可以写出微分跃迁率:
+\begin{equation}
+  w_{\text{fi}} = \frac{2\pi}{\hbar} \|\mathcal{M}_{\text{fi}}\|^2 \delta(E_{\text{f}} - E_{\text{i}})
+\end{equation}
+在三维动量空间中, 每个末态占据体积$\frac{(2\pi)^3}{L^3}$, 所以我们有:
+\begin{equation}
+  \dd{N_{\text{f}}} = \frac{L^3}{(2\pi)^3} \dd[3]{k_{\text{f}}}
+\end{equation}
+从而我们有:
+\begin{equation}
+  \dd{W} = w_{\text{fi}} \dd{N_{\text{f}}} = \frac{2\pi}{\hbar} \|\mathcal{M}_{\text{fi}}\|^2 \delta(E_{\text{f}} - E_{\text{i}}) \frac{L^3}{(2\pi)^3} \dd[3]{k_{\text{f}}} = \frac{2\pi}{\hbar} \|\mathcal{M}_{\text{fi}}\|^2 \delta(E_{\text{f}} - E_{\text{i}}) \frac{L^3}{(2\pi)^3} k_{\text{f}}^2 \dd{k_{\text{f}}} \dd{\Omega_{\text{f}}}
+\end{equation}
+其中:
+\begin{equation}
+  \dd{\Omega_{\text{f}}} = \sin\theta_{\text{f}} \dd{\theta_{\text{f}}} \dd{\phi_{\text{f}}}
+\end{equation}
+我们对于$\dd{W}$进行关于$k_{\text{f}}$的积分, 我们有:
+\begin{equation}
+  \dd{W} = \int \frac{2\pi}{\hbar} \|\mathcal{M}_{\text{fi}}\|^2 \delta(E_{\text{f}} - E_{\text{i}}) \frac{L^3}{(2\pi)^3} k_{\text{f}}^2 \dd{k_{\text{f}}} \dd{\Omega_{\text{f}}} = \frac{2\pi}{\hbar} \frac{m k_i}{\hbar^2} \frac{L^3}{(2\pi)^3} \|\mathcal{M}_{\text{fi}}\|^2 \dd{\Omega_{\text{f}}}
+\end{equation}
+我们可以写出单位体积的粒子入射流, 入射流的物理意义是每单位面积, 每单位时间有多少粒子通过.
+其实就是波函数的概率流密度, 定义为:
+\begin{equation}
+  \bm{j}=\frac{\hbar}{2 m i}\left(\Psi_i^* \nabla \Psi_i-\Psi_i \nabla \Psi_i^*\right)
+\end{equation}
+根据上面的定义, 就带入平面波的表达式, 我们有(只考虑了大小):
+\begin{equation}
+  j = \frac{\hbar k_{\text{i}}}{mL^3}
+\end{equation}
+我们可以计算出散射微分截面:
+\begin{equation}
+  \dv{\sigma}{\Omega} = \frac{2\pi}{\hbar} \frac{L^3}{(2\pi)^3} \frac{m k_{\text{i}}}{\hbar^2} \|\mathcal{M}_{\text{fi}}\|^2 \frac{m L^3}{\hbar k_i} = \frac{m^2}{4\pi^2 \hbar^4} \|\tilde{V}(\bm{k}_{\text{f}} - \bm{k}_{\text{i}})\|^2
+\end{equation}
 
 
 %====================
