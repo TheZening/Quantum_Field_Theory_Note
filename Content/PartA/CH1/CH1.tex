@@ -284,6 +284,7 @@
 
 %====================
 %====================
+\newpage
 \section{量子力学}
 \label{CH1 S3 Quantum mechanics}
 %====================
@@ -465,7 +466,7 @@ Weyl序有一个特别优势:
 \end{equation}
 从而我们可以将Dyson级数写成如下的形式:
 \begin{equation}
-  \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} \right)
+  \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} \right)
 \end{equation}
 当然只有这个式子是没有什么实际计算意义上的, 因为Dyson级数的的计算是很复杂的, 但至少有了形式上的迭代解.
 
@@ -478,7 +479,7 @@ Weyl序有一个特别优势:
 \end{equation}
 其中态的演化由时间演化算符给出, 是Hamiltonian算符决定的:
 \begin{equation}
-  \ket{\Psi;t} = \hat{U}(t,t_0) \ket{\Psi;t_0} \quad \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} \right)
+  \ket{\Psi;t} = \hat{U}(t,t_0) \ket{\Psi;t_0} \quad \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{H}(t') \dd{t'} \right)
 \end{equation}
 我们对$\expval{\hat{A}} = \mel**{\Psi;t}{\hat{A}}{\Psi;t}$这个式子进行一下变形:
 \begin{equation}
@@ -520,7 +521,7 @@ Heisenbg绘景的变化方法还是适用的:
   我们对这个式子求导, 得到:
   \begin{align}
     \pdv{\hat{A}_{\text{H}}(t)}{t} &= \pdv{\hat{U}(t,t_0)}{t} \hat{A}_{\text{S}}(t) \hat{U}^\dagger(t,t_0) + \hat{U}(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}^\dagger(t,t_0) + \hat{U}(t,t_0) \hat{A}_{\text{S}}(t) \pdv{\hat{U}^\dagger(t,t_0)}{t} \\
-    &= -\frac{\mathrm{i}\,}{\hbar} \hat{H}_{\text{H}}(t) \hat{A}_{\text{H}}(t) + \frac{\mathrm{i}\,}{\hbar} \hat{A}_{\text{H}}(t) \hat{H}_{\text{H}}(t) + \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
+    &= -\frac{\mathrm{i}}{\hbar} \hat{H}_{\text{H}}(t) \hat{A}_{\text{H}}(t) + \frac{\mathrm{i}}{\hbar} \hat{A}_{\text{H}}(t) \hat{H}_{\text{H}}(t) + \hat{U}^\dagger(t,t_0) \pdv{\hat{A}_{\text{S}}(t)}{t} \hat{U}(t,t_0)
   \end{align}
   其中我们使用了Hamiltonian算符在Heisenberg绘景下的形式:
   \begin{equation}
@@ -528,7 +529,7 @@ Heisenbg绘景的变化方法还是适用的:
   \end{equation}
   以及时间演化算符的定义:
   \begin{equation}
-    \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{H}_{\text{S}}(t') \dd{t'} \right)
+    \hat{U}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{H}_{\text{S}}(t') \dd{t'} \right)
   \end{equation}
   将上面的式子整理一下, 我们就得到了Heisenberg运动方程:
   \begin{equation}
@@ -739,11 +740,133 @@ Heisenbg绘景的变化方法还是适用的:
 %==========
 \begin{fancybox}
 \begin{equation}
-  \hat{U}_{\text{I}}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}\,}{\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1} \right)
+  \hat{U}_{\text{I}}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1} \right)
 \end{equation}
 这个就是相互作用绘景下的时间演化算符.
 \end{fancybox}
 %==========
+
+
+现在我们来讨论一下相互作用绘景一个非常重要的应用, 就是Fermi's Golden Rule.
+我们考虑初始时刻的态为$\ket{\Psi_{\text{I}};t_0}$, 他是一个本征态, 也就是:
+\begin{equation}
+  \ket{\Psi_{\text{I}};t_0} = \ket{\psi_{\text{i}}} \quad \hat{H}_0 \ket{\psi_{\text{i}}} = E_i \ket{\psi_{\text{i}}}
+\end{equation}
+然后我们考虑在之后的时刻$t$时刻, 我们的态写为:
+\begin{equation}
+  \ket{\Psi_{\text{I}};t} = \hat{U}_{\text{I}}(t,t_0) \ket{\Psi_{\text{I}};t_0} = \hat{U}_{\text{I}}(t,t_0) \ket{\psi_{\text{i}}}
+\end{equation}
+然后我们在时刻$t$时刻, 进行瞬时本征态展开:
+\begin{equation}
+  \ket{\Psi_{\text{I}};t} = \sum_n c_n(t) \ket{\psi_n} \quad c_n(t) = \mel{\psi_n}{\hat{U}_{\text{I}}(t,t_0)}{\psi_i}
+\end{equation}
+对于一个我们特别关心的末本征态$\ket{\psi_{\text{f}}}$, 我们有:
+\begin{equation}
+  c_f(t) = \mel{\psi_{\text{f}}}{\hat{U}_{\text{I}}(t,t_0)}{\psi_{\text{i}}}
+\end{equation}
+这个时候我们就需要考虑$\hat{U}_{\text{I}}(t,t_0)$的形式了, 我们有:
+\begin{equation}
+  \hat{U}_{\text{I}}(t,t_0) = \mathcal{T} \exp\left( -\frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1} \right)
+\end{equation}
+考虑到第一阶扰动展开:
+\begin{equation}
+  \hat{U}_{\text{I}}(t,t_0) \approx \mathbb{I} - \frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1}
+\end{equation}
+我们可以将这个式子代入到$c_{\text{f}}(t)$中:
+\begin{equation}
+  c_f(t) \approx \mel{\psi_{\text{f}}}{\mathbb{I} - \frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \hat{V}_{\text{I}}(t_1) \dd{t_1}}{\psi_{\text{i}}}
+\end{equation}
+我们有:
+\begin{equation}
+  c_f(t) \approx \braket{\psi_{\text{f}}}{\psi_{\text{i}}} - \frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \mel{\psi_{\text{f}}}{\hat{V}_{\text{I}}(t_1)}{\psi_{\text{i}}} \dd{t_1}
+\end{equation}
+注意到$\braket{\psi_{\text{f}}}{\psi_{\text{i}}} = \delta_{\text{fi}}$, 当然我们一般关心的是$\text{f} \neq \text{i}$, 所以这个项为0.
+我们有:
+\begin{equation}
+  c_{\text{f}}(t) \approx - \frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \mel{\psi_{\text{f}}}{\hat{V}_{\text{I}}(t_1)}{\psi_{\text{i}}} \dd{t_1}
+\end{equation}
+现在我们需要计算矩阵元:
+\begin{equation}
+  \mel{\psi_{\text{f}}}{\hat{V}_{\text{I}}(t_1)}{\psi_{\text{i}}} = \mel{\psi_{\text{f}}}{\exp(\frac{\mathrm{i}}{\hbar} \hat{H}_0 t_1) \hat{V}(t_1) \exp(-\frac{\mathrm{i}}{\hbar} \hat{H}_0 t_1)}{\psi_{\text{i}}}
+\end{equation}
+$\hat{H}_0$作用在态上是可以直接写出来的:
+\begin{equation}
+  \mel{\psi_{\text{f}}}{\hat{V}_{\text{I}}(t_1)}{\psi_{\text{i}}} = \mel{\psi_{\text{f}}}{\hat{V}(t_1)}{\psi_{\text{i}}} \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_1 \right)
+\end{equation}
+从而我们的$c_{\text{f}}(t)$变成:
+\begin{equation}
+  c_{\text{f}}(t) \approx - \frac{\mathrm{i}}{\hbar} \int_{t_0}^{t} \mel{\psi_{\text{f}}}{\hat{V}(t_1)}{\psi_{\text{i}}} \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_1 \right) \dd{t_1}
+\end{equation}
+我们考虑势能是不含时的, 我们有:
+\begin{equation}
+  \mel{\psi_{\text{f}}}{\hat{V}(t_1)}{\psi_{\text{i}}} = \mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}
+\end{equation}
+然后可以求积分了:
+\begin{equation}
+  c_{\text{f}}(t) \approx - \frac{\mathrm{i}}{\hbar} \mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}} \int_{t_0}^{t} \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_1 \right) \dd{t_1}
+\end{equation}
+我们可以计算这个积分:
+\begin{equation}
+  \int_{t_0}^{t} \exp\left( -\frac{\mathrm{i}}{\hbar} (E_f - E_i) t_1 \right) \dd{t_1} = -\frac{\hbar}{\mathrm{i}(E_{\text{f}} - E_{\text{i}})} \left[ \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_1 \right) \right]_{t_0}^{t}
+\end{equation}
+将这个结果代入到$c_{\text{f}}(t)$中, 我们得到:
+\begin{align}
+  c_{\text{f}}(t) \approx& - \frac{\mathrm{i}}{\hbar} \mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}} \left( -\frac{\hbar}{\mathrm{i}(E_f - E_i)} \left[ \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_1 \right) \right]_{t_0}^{t} \right) \\
+  =& \frac{\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}}{E_{\text{f}} - E_{\text{i}}} \left( \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t \right) - \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_0 \right) \right)
+\end{align}
+我们对后面的因子进行一些变换:
+\begin{equation}
+  \omega_{\text{fi}} = \frac{E_{\text{f}} - E_{\text{i}}}{\hbar}
+\end{equation}
+从而我们有:
+\begin{equation}
+  \frac{\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}}{E_{\text{f}} - E_{\text{i}}} \left( \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t \right) - \exp\left( -\frac{\mathrm{i}}{\hbar} (E_{\text{f}} - E_{\text{i}}) t_0 \right) \right) = \frac{\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}}{\hbar \omega_{\text{fi}}} \left( e^{-\mathrm{i} \omega_{\text{fi}} t} - e^{-\mathrm{i} \omega_{\text{fi}} t_0} \right)
+\end{equation}
+我们引入时间间隔$T=t - t_0$, 那么我们有:
+\begin{equation}
+  c_{\text{f}}(t) \approx \frac{\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}}{\hbar \omega_{\text{fi}}} e^{-\mathrm{i}\,\omega_{\text{fi}} (t+t_0)/2} \left( e^{-\mathrm{i} \omega_{\text{fi}} T/2} - e^{+\mathrm{i} \omega_{\text{fi}} T/2} \right)
+\end{equation}
+这就是:
+\begin{equation}
+  c_{\text{f}}(t) \approx -2 \mathrm{i}\, \frac{\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}}{\hbar \omega_{\text{fi}}} e^{-\mathrm{i}\,\omega_{\text{fi}} (t+t_0)/2} \sin\left( \frac{\omega_{\text{fi}} T}{2} \right)
+\end{equation}
+现在我们提问, 在$t$时刻, 我们获得本征态$\ket{\psi_{\text{f}}}$的概率是多少?
+这由系数$c_{\text{f}}(t)$的模方给出:
+\begin{equation}
+  P_{\text{fi}}(t) = \|c_{\text{f}}(t)\|^2 = 4 \left( \frac{\|\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}\|}{\hbar \omega_{\text{fi}}} \right)^2 \sin^2\left( \frac{\omega_{\text{fi}} T}{2} \right)
+\end{equation}
+这个就是Fermi's Golden Rule.
+当然这个东西还是没法直接用, 所以我们必须考虑长时间极限, 也就是$T \to \infty$.
+\begin{equation}
+  4 \sin^2\left( \frac{\omega_{\text{fi}} T}{2} \right)\frac{1}{\hbar^2 \omega^2_{\text{fi}}} \to  \frac{2\pi}{\hbar} T \delta(E_{\text{f}} - E_{\text{i}})
+\end{equation}
+我们有:
+\begin{equation}
+  P_{\text{fi}}(t) = \frac{2\pi}{\hbar} T \|\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}\|^2 \delta(E_{\text{f}} - E_{\text{i}})
+\end{equation}
+他的一个重要用途就是获得散射率, (倒数就是散射时间):
+\begin{equation}
+  \Gamma_{\text{fi}} = \frac{2\pi}{\hbar} \|\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}\|^2 \delta(E_{\text{f}} - E_{\text{i}})
+\end{equation}
+这个是准确的从初态到关心末态的散射率.
+但是一般末态是可能是一个小区域, 换句话说, 我们要算概率而不是概率密度, 所以我们一般在使用Fermi's Golden Rule时, 都会考虑和末态有关的一小段能量:
+\begin{equation}
+  \Gamma_{\text{fi}} = \frac{2\pi}{\hbar} \sum_{\text{f}} \|\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}\|^2 \delta(E_{\text{f}} - E_{\text{i}})
+\end{equation}
+如果是连续谱的话, 我们就需要积分, 但是要考虑一下末态的能量密度 $\rho(E_{\text{f}})$:
+\begin{equation}
+  \Gamma_{\text{fi}} = \frac{2\pi}{\hbar} \int \rho(E_{\text{f}}) \|\mel{\psi_{\text{f}}}{\hat{V}}{\psi_{\text{i}}}\|^2 \delta(E_{\text{f}} - E_{\text{i}}) \dd{E_{\text{f}}} 
+\end{equation}
+
+
+
+
+
+
+
+
+
+
 
 
 %====================
