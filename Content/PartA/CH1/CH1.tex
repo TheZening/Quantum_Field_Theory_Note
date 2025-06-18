@@ -1294,3 +1294,65 @@ $\hat{H}_0$作用在态上是可以直接写出来的:
 当然了, 就像是一个向量是本征向量的线性组合, 那么任意一个场都是本征模式的线性组合.
 就像是Fourier变换, 一个时域上的信号可以看成是频域上本征模式的线性组合.
 只不过场是时空的函数了, 所以他可以被看成是频域-动量空间的本征模式的线性组合.
+
+现在我们推广到四维时空上, 就是3+1D的场论, 从一个标量场出发:
+\begin{equation}
+  \phi(x^\mu) = \phi(t, \bm{x}) = \text{时空点$x^\mu$的标量场}
+\end{equation}
+我们如果一定要找一个具体的例子, 那么我们就想考虑一个抽象的振动幅度$\phi(x^\mu)$, 取决于3+1D时空点$x^\mu$.
+当然, 此时想可视化这个场就很困难了.
+我们仍然可以写出Lagrangian密度, 也就是:
+\begin{equation}
+  \mathcal{L} = \frac{1}{2} \rho \pqty{\pdv{\phi}{t}}^2 - \frac{1}{2} \lambda (\nabla \phi)\cdot(\nabla \phi)
+\end{equation}
+这个时候, 我们就注意到一个问题了, 单粒子的Lagrangian是不关于$\partial_\mu \phi$的, 但是场的Lagrangian就取决于这个量了:e'q
+\begin{equation}
+  \mathcal{L}(\phi, \partial_\mu \phi, x^\mu)
+\end{equation}
+我们可以使用最小作用量原理, 写出动力学方程:
+\begin{equation}
+  S[\phi] = \int \mathcal{L}(\phi, \partial_\mu \phi, x^\mu) \dd[4]{x}
+\end{equation}
+我们仍然考虑变分原理, 注意, 是场的变分, 不是坐标的变分原理:
+\begin{equation}
+  \delta S = \int \pdv{\mathcal{L}}{\phi} \delta \phi +  \pdv{\mathcal{L}}{\partial_\mu \phi} \delta (\partial_\mu \phi)  \dd[4]{x}
+\end{equation}
+这个地方实际上是有一个简写的, 因为我们实际上应该对所有的$\partial_\mu \phi$都进行变分, 也就是:
+\begin{equation}
+  \frac{\partial \mathcal{L}}{\partial (\partial_\mu \phi)} \to \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}} \delta\left(\pdv{\phi}{x^0}\right) + \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^1}} \delta\left(\pdv{\phi}{x^1}\right) + \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^2}} \delta\left(\dps\pdv{\phi}{x^2}\right) + \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^3}} \delta\left(\pdv{\phi}{x^3}\right)
+\end{equation}
+我们可以针对第二项进行一个变形, 我们选取其中一个维度作为例子:
+\begin{equation}
+  \int \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}} \delta\left(\pdv{\phi}{x^0}\right) \dd{t} = \int \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}} \left(\pdv{\delta\phi}{x^0}\right) \dd{x^0} = - \int \pdv{}{x^0} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}}\delta\phi \dd{x^0} 
+\end{equation}
+从而我们有:
+\begin{equation}
+  \delta S = \int \pdv{\mathcal{L}}{\phi} \delta \phi - \pdv{}{x^0} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}} \delta\phi - \pdv{}{x^1} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^1}} \delta\phi - \pdv{}{x^2} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^2}} \delta\phi - \pdv{}{x^3} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^3}} \delta\phi  \dd[4]{x}
+\end{equation}
+从而我们的到了场的Euler-Lagrange方程:
+\begin{equation}
+  \pdv{\mathcal{L}}{\phi} - \pdv{}{x^0} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}} - \pdv{}{x^1} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^1}} - \pdv{}{x^2} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^2}} - \pdv{}{x^3} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^3}} = 0
+\end{equation}
+我们要习惯在四维时空中写出这个方程:
+\begin{equation}
+  \pdv{}{x^0} \pdv{\mathcal{L}}{\dps\pdv{\phi}{x^0}} \to \partial_\mu \pdv{\mathcal{L}}{\partial_\mu \phi} \quad \text{(注意$\partial_\mu$是四维时空的偏导数)}
+\end{equation}
+从而我们有:
+\begin{fancybox}
+\begin{equation}
+  \partial_\mu \pdv{\mathcal{L}}{\partial_\mu \phi} - \pdv{\mathcal{L}}{\phi} = 0 \Leftrightarrow \pdv{}{x^\mu} \pdv{\mathcal{L}}{\partial_\mu \phi} - \pdv{\mathcal{L}}{\phi} = 0
+\end{equation}
+\end{fancybox}
+对于我们之前3+1D的标量场, 我们有:
+\begin{equation}
+  \mathcal{L} = \frac{1}{2} \rho \pqty{\pdv{\phi}{t}}^2 - \frac{1}{2} \lambda \pqty{\nabla \phi}^2
+\end{equation}
+从而我们有:
+\begin{equation}
+  \pdv{\mathcal{L}}{\phi} = 0 \quad \pdv{\mathcal{L}}{\partial_0 \phi} = \rho \pdv{\phi}{t} \quad \pdv{}{x^0} \pdv{\mathcal{L}}{\partial_0 \phi} = \rho \pdv[2]{\phi}{t}
+\end{equation}
+把剩下的四个空间偏导数都写出来, 我们有:
+\begin{equation}
+\rho \pdv[2]{\phi}{t} - \lambda \nabla^2 \phi = 0
+\end{equation}
+虽然我们还不清楚$\phi$的物理意义, 但是我们可以看出, 这个方程和一维弦的振动方程是类似的.
